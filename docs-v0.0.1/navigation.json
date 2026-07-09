@@ -11,6 +11,13 @@
     ]
   },
   {
+    "title": "Versions & Compatibility",
+    "children": [
+      { "title": "Component Versions", "path": "/component-versions", "icon": "package-open" },
+      { "title": "Compatibility Matrix", "path": "/COMPATIBILITY", "icon": "git-compare" }
+    ]
+  },
+  {
     "title": "GitHub",
     "path": "https://github.com/rishighan/threetwo",
     "icon": "github",
