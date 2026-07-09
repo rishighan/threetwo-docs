@@ -1,6 +1,8 @@
 # ThreeTwo Documentation
 
-This website is built using [docmd](https://docmd.io/), a modern, zero-config documentation engine that converts Markdown files into production-ready documentation sites.
+This website is built using [docmd](https://docmd.io/), a modern, zero-config
+documentation engine that converts Markdown files into production-ready
+documentation sites.
 
 ## Installation
 
@@ -28,7 +30,8 @@ Or with yarn:
 yarn dev
 ```
 
-This command starts a local development server (typically at `http://localhost:3000`) and automatically rebuilds as you make changes.
+This command starts a local development server (typically at
+`http://localhost:3000`) and automatically rebuilds as you make changes.
 
 ## Build
 
@@ -64,7 +67,8 @@ This builds the site and serves it locally.
 
 ## Deployment
 
-docmd supports one-command deployment with built-in support for various hosting platforms.
+docmd supports one-command deployment with built-in support for various hosting
+platforms.
 
 ### Deploy to GitHub Pages
 
@@ -78,7 +82,8 @@ Or with yarn:
 yarn deploy
 ```
 
-For more deployment options, see the [docmd documentation](https://docs.docmd.io/deployment/).
+For more deployment options, see the
+[docmd documentation](https://docs.docmd.io/deployment/).
 
 ## Project Structure
 
@@ -90,13 +95,15 @@ For more deployment options, see the [docmd documentation](https://docs.docmd.io
 ## Configuration
 
 Edit `docmd.config.js` to customize:
+
 - Site title and description
 - Navigation menu
 - Theme and styling
 - Plugins and features
 - Build options
 
-See the [docmd configuration docs](https://docs.docmd.io/configuration/) for all available options.
+See the [docmd configuration docs](https://docs.docmd.io/configuration/) for
+all available options.
 
 ## Learn More
 

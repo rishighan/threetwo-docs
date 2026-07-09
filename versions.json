@@ -1,0 +1,58 @@
+{
+  "last_updated": "2022-08-20T16:49:58Z",
+  "update_source": "automated",
+  "services": [
+    {
+      "name": "ThreeTwo (Main App)",
+      "repo": "rishighan/threetwo",
+      "current_version": "0.0.1",
+      "latest_release": {
+        "tag": "v0.0.1",
+        "version": "0.0.1",
+        "date": "2022-08-20T16:49:58Z",
+        "url": "https://github.com/rishighan/threetwo/releases/tag/v0.0.1",
+        "prerelease": true,
+        "docker_image": "frishi/threetwo:0.0.1"
+      }
+    },
+    {
+      "name": "Metadata Service",
+      "repo": "rishighan/threetwo-metadata-service",
+      "current_version": "0.0.1",
+      "latest_release": {
+        "tag": "v0.0.1",
+        "version": "0.0.1",
+        "date": "2022-08-20T16:49:58Z",
+        "url": "https://github.com/rishighan/threetwo-metadata-service/releases/tag/v0.0.1",
+        "prerelease": true,
+        "docker_image": "frishi/threetwo-metadata-service:0.0.1"
+      }
+    },
+    {
+      "name": "Core Service",
+      "repo": "rishighan/threetwo-core-service",
+      "current_version": "0.0.1",
+      "latest_release": {
+        "tag": "v0.0.1",
+        "version": "0.0.1",
+        "date": "2022-08-20T16:49:58Z",
+        "url": "https://github.com/rishighan/threetwo-core-service/releases/tag/v0.0.1",
+        "prerelease": true,
+        "docker_image": "frishi/threetwo-core-service:0.0.1"
+      }
+    },
+    {
+      "name": "Docker Compose",
+      "repo": "rishighan/threetwo-docker-compose",
+      "current_version": "0.0.1",
+      "latest_release": {
+        "tag": "v0.0.1",
+        "version": "0.0.1",
+        "date": "2022-08-20T16:49:58Z",
+        "url": "https://github.com/rishighan/threetwo-docker-compose/releases/tag/v0.0.1",
+        "prerelease": true
+      }
+    }
+  ]
+}
+
