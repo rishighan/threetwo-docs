@@ -2,15 +2,15 @@ okf_version: 0.8.10
 bundle:
   name: threetwo
   title: "ThreeTwo!"
-  description: "ThreeTwo Documentation - Your guide to getting started"
+  description: ""
   url: ""
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-09T18:32:08.998Z"
+  generated_at: "2026-07-09T20:05:02.582Z"
   default_type: concept
 stats:
-  concepts: 15
+  concepts: 18
   by_type:
-    concept: 15
+    concept: 18
   locales: 
   versions:
     - latest
@@ -22,6 +22,14 @@ concepts:
     title: "Technical Architecture"
     path: /architecture/
     file: concepts/architecture.md
+    locale: ""
+    version: latest
+    tags: 
+  - id: component-versions
+    type: concept
+    title: "Component Versions"
+    path: /component-versions/
+    file: concepts/component-versions.md
     locale: ""
     version: latest
     tags: 
@@ -43,7 +51,7 @@ concepts:
     tags: 
   - id: unraid-dockercompose
     type: concept
-    title: "Install ThreeTwo! on unRAID with the docker-compose plugin"
+    title: "Install ThreeTwo! on unRAID with docker-compose"
     path: /unraid_dockercompose/
     file: concepts/unraid-dockercompose.md
     locale: ""
@@ -65,6 +73,14 @@ concepts:
     locale: ""
     version: v0.0.1-beta
     tags: 
+  - id: v0-0-1-beta-component-versions
+    type: concept
+    title: "Component Versions - v0.0.1-beta"
+    path: /v0.0.1-beta/component-versions/
+    file: concepts/v0-0-1-beta-component-versions.md
+    locale: ""
+    version: v0.0.1-beta
+    tags: 
   - id: v0-0-1-beta-intro
     type: concept
     title: Introduction
@@ -83,7 +99,7 @@ concepts:
     tags: 
   - id: v0-0-1-beta-unraid-dockercompose
     type: concept
-    title: "Install ThreeTwo! on unRAID with the docker-compose plugin"
+    title: "Install ThreeTwo! on unRAID with docker-compose"
     path: /v0.0.1-beta/unraid_dockercompose/
     file: concepts/v0-0-1-beta-unraid-dockercompose.md
     locale: ""
@@ -105,6 +121,14 @@ concepts:
     locale: ""
     version: v0.0.1
     tags: 
+  - id: v0-0-1-component-versions
+    type: concept
+    title: "Component Versions - v0.0.1"
+    path: /v0.0.1/component-versions/
+    file: concepts/v0-0-1-component-versions.md
+    locale: ""
+    version: v0.0.1
+    tags: 
   - id: v0-0-1-intro
     type: concept
     title: Introduction
@@ -123,7 +147,7 @@ concepts:
     tags: 
   - id: v0-0-1-unraid-dockercompose
     type: concept
-    title: "Install ThreeTwo! on unRAID with the docker-compose plugin"
+    title: "Install ThreeTwo! on unRAID with docker-compose"
     path: /v0.0.1/unraid_dockercompose/
     file: concepts/v0-0-1-unraid-dockercompose.md
     locale: ""

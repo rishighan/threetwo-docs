@@ -104,10 +104,10 @@
 
     <base href="/">
     
-    <link rel="stylesheet" href="../../assets/css/docmd-main.css?v=mrdug0az">
+    <link rel="stylesheet" href="../../assets/css/docmd-main.css?v=mrdxrgvp">
     
-    <link rel="stylesheet" href="../../assets/css/docmd-highlight-light.css?v=mrdug0az" id="hljs-light" >
-    <link rel="stylesheet" href="../../assets/css/docmd-highlight-dark.css?v=mrdug0az" id="hljs-dark" disabled>
+    <link rel="stylesheet" href="../../assets/css/docmd-highlight-light.css?v=mrdxrgvp" id="hljs-light" >
+    <link rel="stylesheet" href="../../assets/css/docmd-highlight-dark.css?v=mrdxrgvp" id="hljs-dark" disabled>
     
     
 <meta name="description" content="">
@@ -122,8 +122,8 @@
 
 
 
-<link rel="stylesheet" href="../../assets/css/docmd-git.css?v=mrdug0az" >
-<link rel="stylesheet" href="../../assets/css/docmd-openapi.css?v=mrdug0az" >
+<link rel="stylesheet" href="../../assets/css/docmd-git.css?v=mrdxrgvp" >
+<link rel="stylesheet" href="../../assets/css/docmd-openapi.css?v=mrdxrgvp" >
 
     
     <script>/**
@@ -545,6 +545,76 @@
         
       </li>
     
+      <li class="collapsible nav-group"  aria-expanded="false" >
+      
+        <span class="nav-label nav-group">
+          
+          <span class="nav-item-title">
+            Versions &amp; Compatibility
+          </span>
+          
+            <span class="collapse-icon-wrapper">
+<svg class="lucide-icon icon-chevron-right collapse-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</span>
+          
+        </span>
+        
+
+        
+          <ul class="submenu">
+            
+      <li class="" >
+      
+        <a href="../../v0.0.1-beta/component-versions/" class=" "
+          >
+           
+<svg class="lucide-icon icon-package-open " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-package-open"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 22v-9" />
+  <path d="M15.17 2.21a1.67 1.67 0 0 1 1.63 0L21 4.57a1.93 1.93 0 0 1 0 3.36L8.82 14.79a1.655 1.655 0 0 1-1.64 0L3 12.43a1.93 1.93 0 0 1 0-3.36z" />
+  <path d="M20 13v3.87a2.06 2.06 0 0 1-1.11 1.83l-6 3.08a1.93 1.93 0 0 1-1.78 0l-6-3.08A2.06 2.06 0 0 1 4 16.87V13" />
+  <path d="M21 12.43a1.93 1.93 0 0 0 0-3.36L8.83 2.2a1.64 1.64 0 0 0-1.63 0L3 4.57a1.93 1.93 0 0 0 0 3.36l12.18 6.86a1.636 1.636 0 0 0 1.63 0z" />
+</svg>
+
+          
+          <span class="nav-item-title">
+            Component Versions
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+          </ul>
+        
+      </li>
+    
       <li class="" >
       
         <a href="https://github.com/rishighan/threetwo" class=" "
@@ -730,7 +800,7 @@
             <div class="content-layout">
               <div class="main-content">
                 <div class="docmd-breadcrumbs-row">
-                  <div id="docmd-raw-markdown" data-content="---%0Asidebar_position%3A%202%20%0Aid%3A%20unraid_install%0Atitle%3A%20Install%20ThreeTwo!%20on%20unRaid%0A---%0A%0A%23%23%23%20Notes%0A%0A-%20Currently%2C%20%60ThreeTwo!%60%20is%20installed%20along%20with%20its%20dependencies%20using%20%60docker-compose%60.%20The%20easiest%20way%20to%20install%20it%20on%20%60unRAID%60%20is%20to%20use%20a%20VM.%0A-%20Skip%20the%20VM%20creation%20steps%2C%20if%20you%20already%20have%20a%20Debian%20VM%0A%0A%23%23%23%20Pre-requisites%0A%0AThis%20guide%20assumes%20the%20following%20is%20installed%20or%20readily%20available%3A%0A%0A-%20%60unRaid%206.9.2%60%20(this%20version%20was%20tested%20against%20%606.9.2%60)%0A-%20%60Debian%2010.x%60%20(Grab%20the%20install%20%60.iso%60%20%5Bhere%5D(https%3A%2F%2Fcdimage.debian.org%2Fdebian-cd%2Fcurrent%2Famd64%2Fiso-cd%2Fdebian-11.1.0-amd64-netinst.iso))%0A%0A%23%23%23%20Getting%20the%20VM%20up%20and%20running%0A%0A1.%20Download%20the%20%60Debian%60%20install%20%60.iso%60%0A2.%20Place%20it%20in%20a%20folder%20accessible%20by%20the%20VM%0A3.%20Go%20to%20the%20%60VM%60%20tab%20in%20your%20%60unRaid%60%20navigation%0A4.%20Click%20%60Add%20VM%60%0A5.%20From%20the%20list%20presented%20to%20you%2C%20click%20%60Debian%60%20under%20%60Linux%60%0A6.%20On%20the%20VM%20configration%20page%2C%20enter%20the%20desired%20options%20for%20memory%2C%20CPU%20cores%2C%20vdisk%20allocation%0A7.%20Make%20sure%20that%20you%20have%20set%20the%20volume%20containing%20the%20comics%20correctly%20for%20%60Unraid%20Share%60%0A8.%20Make%20sure%20that%20you%20have%20also%20set%20the%20%60Unraid%20Mount%20tag%60%20option%0A9.%20Make%20sure%20that%20the%20network%20bridge%20is%20set%20to%20%60br0%60%0A10.%20Set%20a%20password%20for%20%60VNC%60%20so%20you%20can%20follow%20through%20with%20a%20graphical%20install%20if%20you%20so%20wish%0A%0A%23%23%23%20Installing%20Debian%20on%20the%20VM%0A%0A1.%20Launch%20the%20VM%20via%20%60VNC%20Remote%60%20option%0A2.%20Follow%20the%20steps%20of%20the%20graphical%20installer%0A3.%20Create%20a%20%60root%60%20user%20and%20a%20normal%20%60user%60%20and%20set%20the%20passwords%20for%20both%0A%20%20%20%0A%23%23%23%20Docker%20pre-requisites%0A%0A1.%20%5BMake%20sure%20you%20have%5D(https%3A%2F%2Funix.stackexchange.com%2Fquestions%2F354928%2Fbash-sudo-command-not-found)%20%60sudo%60%0A2.%20Make%20sure%20you%20have%20%60ssh%60%20access%20for%20the%20user%20you%20created%20earlier%0A3.%20%60ssh%60%20into%20the%20VM%20as%20the%20non-root%20user%0A4.%20Install%20%5BDocker%20Engine%5D(https%3A%2F%2Fdocs.docker.com%2Fengine%2Finstall%2Fdebian%2F)%0A5.%20Install%20%5Bdocker-compose%5D(https%3A%2F%2Fdocs.docker.com%2Fcompose%2Finstall%2F%23install-compose-on-linux-systems)%0A6.%20Verify%20that%20%60docker%60%20and%20%60docker-compose%60%20commands%20work%0A%0A%23%23%23%20Installation%0A%0A1.%20Clone%20the%20repo%3A%20%60git%20clone%20https%3A%2F%2Fgithub.com%2Frishighan%2Fthreetwo.git%60%0A2.%20Change%20the%20directory%3A%20%60cd%20threetwo%60%0A3.%20Create%20directories%20within%20%60threetwo%60%0A%20%20%20%20%60%60%60bash%0A%20%20%20%20mkdir%20comics%20userdata%0A%0A%20%20%20%20mkdir%20userdata%2Fcovers%20userdata%2Ftemporary%20userdata%2Fexpanded%0A%20%20%20%20%60%60%60%0A4.%20Create%20an%20external%20docker%20network%20using%20%60sudo%20docker%20network%20create%20proxy%60%0A5.%20Run%20%60sudo%20docker-compose%20up%20--build%20-d%60%0A6.%20Wait%20for%20a%20hot%20minute%0A%0A%23%23%23%20Post-install%20checks%0A%0A1.%20Once%20the%20%60docker-compose%20up%60%20command%20successfully%20completes%2C%20you%20can%20check%20the%20spun-up%20containers%20using%20%60docker%20ps%60%0A2.%20%0A" style="display: none;"></div>
+                  <div id="docmd-raw-markdown" data-content="---%0Asidebar_position%3A%202%0Aid%3A%20unraid_install%0Atitle%3A%20Install%20ThreeTwo!%20on%20unRaid%0A---%0A%0A%23%23%20Notes%0A%0A-%20Currently%2C%20%60ThreeTwo!%60%20is%20installed%20along%20with%20its%20dependencies%20using%0A%20%20%60docker-compose%60.%20The%20easiest%20way%20to%20install%20it%20on%20%60unRAID%60%20is%20to%20use%20a%20VM.%0A-%20Skip%20the%20VM%20creation%20steps%2C%20if%20you%20already%20have%20a%20Debian%20VM%0A%0A%23%23%20Pre-requisites%0A%0AThis%20guide%20assumes%20the%20following%20is%20installed%20or%20readily%20available%3A%0A%0A-%20%60unRaid%206.9.2%60%20(this%20version%20was%20tested%20against%20%606.9.2%60)%0A-%20%60Debian%2010.x%60%20(Grab%20the%20install%0A%20%20%5B.iso%5D(https%3A%2F%2Fcdimage.debian.org%2Fdebian-cd%2Fcurrent%2Famd64%2Fiso-cd%2Fdebian-11.1.0-amd64-netinst.iso))%0A%0A%23%23%20Getting%20the%20VM%20up%20and%20running%0A%0A1.%20Download%20the%20%60Debian%60%20install%20%60.iso%60%0A2.%20Place%20it%20in%20a%20folder%20accessible%20by%20the%20VM%0A3.%20Go%20to%20the%20%60VM%60%20tab%20in%20your%20%60unRaid%60%20navigation%0A4.%20Click%20%60Add%20VM%60%0A5.%20From%20the%20list%20presented%20to%20you%2C%20click%20%60Debian%60%20under%20%60Linux%60%0A6.%20On%20the%20VM%20configration%20page%2C%20enter%20the%20desired%20options%20for%20memory%2C%20CPU%0A%20%20%20cores%2C%20vdisk%20allocation%0A7.%20Make%20sure%20that%20you%20have%20set%20the%20volume%20containing%20the%20comics%20correctly%20for%0A%20%20%20%60Unraid%20Share%60%0A8.%20Make%20sure%20that%20you%20have%20also%20set%20the%20%60Unraid%20Mount%20tag%60%20option%0A9.%20Make%20sure%20that%20the%20network%20bridge%20is%20set%20to%20%60br0%60%0A10.%20Set%20a%20password%20for%20%60VNC%60%20so%20you%20can%20follow%20through%20with%20a%20graphical%20install%0A%20%20%20%20if%20you%20so%20wish%0A%0A%23%23%20Installing%20Debian%20on%20the%20VM%0A%0A1.%20Launch%20the%20VM%20via%20%60VNC%20Remote%60%20option%0A2.%20Follow%20the%20steps%20of%20the%20graphical%20installer%0A3.%20Create%20a%20%60root%60%20user%20and%20a%20normal%20%60user%60%20and%20set%20the%20passwords%20for%20both%0A%0A%23%23%20Docker%20pre-requisites%0A%0A1.%20%5BMake%20sure%20you%20have%5D(https%3A%2F%2Funix.stackexchange.com%2Fquestions%2F354928%2Fbash-sudo-command-not-found)%0A%20%20%20%60sudo%60%0A2.%20Make%20sure%20you%20have%20%60ssh%60%20access%20for%20the%20user%20you%20created%20earlier%0A3.%20%60ssh%60%20into%20the%20VM%20as%20the%20non-root%20user%0A4.%20Install%20%5BDocker%20Engine%5D(https%3A%2F%2Fdocs.docker.com%2Fengine%2Finstall%2Fdebian%2F)%0A5.%20Install%0A%20%20%20%5Bdocker-compose%5D(https%3A%2F%2Fdocs.docker.com%2Fcompose%2Finstall%2F%23install-compose-on-linux-systems)%0A6.%20Verify%20that%20%60docker%60%20and%20%60docker-compose%60%20commands%20work%0A%0A%23%23%20Installation%0A%0A1.%20Clone%20the%20repo%3A%20%60git%20clone%20https%3A%2F%2Fgithub.com%2Frishighan%2Fthreetwo.git%60%0A2.%20Change%20the%20directory%3A%20%60cd%20threetwo%60%0A3.%20Create%20directories%20within%20%60threetwo%60%0A%0A%20%20%20%60%60%60bash%0A%20%20%20mkdir%20comics%20userdata%0A%0A%20%20%20mkdir%20userdata%2Fcovers%20userdata%2Ftemporary%20userdata%2Fexpanded%0A%20%20%20%60%60%60%0A%0A4.%20Create%20an%20external%20docker%20network%20using%20%60sudo%20docker%20network%20create%20proxy%60%0A5.%20Run%20%60sudo%20docker-compose%20up%20--build%20-d%60%0A6.%20Wait%20for%20a%20hot%20minute%0A%0A%23%23%20Post-install%20checks%0A%0A1.%20Once%20the%20%60docker-compose%20up%60%20command%20successfully%20completes%2C%20you%20can%20check%0A%20%20%20the%20spun-up%20containers%20using%20%60docker%20ps%60%0A" style="display: none;"></div>
                   
                     <nav aria-label="breadcrumb" class="docmd-breadcrumbs">
                       <ol>
@@ -819,62 +889,75 @@
                   
                 </div>
                 
-                <h3 id="notes" class="docmd-heading"><a href="#notes" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Notes</h3>
+                <h2 id="notes" class="docmd-heading"><a href="#notes" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Notes</h2>
 <ul>
-<li>Currently, <code>ThreeTwo!</code> is installed along with its dependencies using <code>docker-compose</code>. The easiest way to install it on <code>unRAID</code> is to use a VM.</li>
+<li>Currently, <code>ThreeTwo!</code> is installed along with its dependencies using<br>
+<code>docker-compose</code>. The easiest way to install it on <code>unRAID</code> is to use a VM.</li>
 <li>Skip the VM creation steps, if you already have a Debian VM</li>
 </ul>
-<h3 id="pre-requisites" class="docmd-heading"><a href="#pre-requisites" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Pre-requisites</h3>
+<h2 id="pre-requisites" class="docmd-heading"><a href="#pre-requisites" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Pre-requisites</h2>
 <p>This guide assumes the following is installed or readily available:</p>
 <ul>
 <li><code>unRaid 6.9.2</code> (this version was tested against <code>6.9.2</code>)</li>
-<li><code>Debian 10.x</code> (Grab the install <code>.iso</code> <a href="https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.1.0-amd64-netinst.iso">here</a>)</li>
+<li><code>Debian 10.x</code> (Grab the install<br>
+<a href="https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.1.0-amd64-netinst.iso">.iso</a>)</li>
 </ul>
-<h3 id="getting-the-vm-up-and-running" class="docmd-heading"><a href="#getting-the-vm-up-and-running" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Getting the VM up and running</h3>
+<h2 id="getting-the-vm-up-and-running" class="docmd-heading"><a href="#getting-the-vm-up-and-running" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Getting the VM up and running</h2>
 <ol>
 <li>Download the <code>Debian</code> install <code>.iso</code></li>
 <li>Place it in a folder accessible by the VM</li>
 <li>Go to the <code>VM</code> tab in your <code>unRaid</code> navigation</li>
 <li>Click <code>Add VM</code></li>
 <li>From the list presented to you, click <code>Debian</code> under <code>Linux</code></li>
-<li>On the VM configration page, enter the desired options for memory, CPU cores, vdisk allocation</li>
-<li>Make sure that you have set the volume containing the comics correctly for <code>Unraid Share</code></li>
+<li>On the VM configration page, enter the desired options for memory, CPU<br>
+cores, vdisk allocation</li>
+<li>Make sure that you have set the volume containing the comics correctly for<br>
+<code>Unraid Share</code></li>
 <li>Make sure that you have also set the <code>Unraid Mount tag</code> option</li>
 <li>Make sure that the network bridge is set to <code>br0</code></li>
-<li>Set a password for <code>VNC</code> so you can follow through with a graphical install if you so wish</li>
+<li>Set a password for <code>VNC</code> so you can follow through with a graphical install<br>
+if you so wish</li>
 </ol>
-<h3 id="installing-debian-on-the-vm" class="docmd-heading"><a href="#installing-debian-on-the-vm" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Installing Debian on the VM</h3>
+<h2 id="installing-debian-on-the-vm" class="docmd-heading"><a href="#installing-debian-on-the-vm" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Installing Debian on the VM</h2>
 <ol>
 <li>Launch the VM via <code>VNC Remote</code> option</li>
 <li>Follow the steps of the graphical installer</li>
 <li>Create a <code>root</code> user and a normal <code>user</code> and set the passwords for both</li>
 </ol>
-<h3 id="docker-pre-requisites" class="docmd-heading"><a href="#docker-pre-requisites" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Docker pre-requisites</h3>
+<h2 id="docker-pre-requisites" class="docmd-heading"><a href="#docker-pre-requisites" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Docker pre-requisites</h2>
 <ol>
-<li><a href="https://unix.stackexchange.com/questions/354928/bash-sudo-command-not-found">Make sure you have</a> <code>sudo</code></li>
+<li><a href="https://unix.stackexchange.com/questions/354928/bash-sudo-command-not-found">Make sure you have</a><br>
+<code>sudo</code></li>
 <li>Make sure you have <code>ssh</code> access for the user you created earlier</li>
 <li><code>ssh</code> into the VM as the non-root user</li>
 <li>Install <a href="https://docs.docker.com/engine/install/debian/">Docker Engine</a></li>
-<li>Install <a href="https://docs.docker.com/compose/install/#install-compose-on-linux-systems">docker-compose</a></li>
+<li>Install<br>
+<a href="https://docs.docker.com/compose/install/#install-compose-on-linux-systems">docker-compose</a></li>
 <li>Verify that <code>docker</code> and <code>docker-compose</code> commands work</li>
 </ol>
-<h3 id="installation" class="docmd-heading"><a href="#installation" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Installation</h3>
+<h2 id="installation" class="docmd-heading"><a href="#installation" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Installation</h2>
 <ol>
-<li>Clone the repo: <code>git clone https://github.com/rishighan/threetwo.git</code></li>
-<li>Change the directory: <code>cd threetwo</code></li>
-<li>Create directories within <code>threetwo</code><pre class="hljs"><code class="language-bash"><span class="hljs-keyword">mkdir</span> comics userdata
+<li><p>Clone the repo: <code>git clone https://github.com/rishighan/threetwo.git</code></p>
+</li>
+<li><p>Change the directory: <code>cd threetwo</code></p>
+</li>
+<li><p>Create directories within <code>threetwo</code></p>
+<pre class="hljs"><code class="language-bash"><span class="hljs-keyword">mkdir</span> comics userdata
 
 <span class="hljs-keyword">mkdir</span> userdata<span class="hljs-punctuation">/</span>covers userdata<span class="hljs-punctuation">/</span>temporary userdata<span class="hljs-punctuation">/</span>expanded
 </code></pre>
 </li>
-<li>Create an external docker network using <code>sudo docker network create proxy</code></li>
-<li>Run <code>sudo docker-compose up --build -d</code></li>
-<li>Wait for a hot minute</li>
+<li><p>Create an external docker network using <code>sudo docker network create proxy</code></p>
+</li>
+<li><p>Run <code>sudo docker-compose up --build -d</code></p>
+</li>
+<li><p>Wait for a hot minute</p>
+</li>
 </ol>
-<h3 id="post-install-checks" class="docmd-heading"><a href="#post-install-checks" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Post-install checks</h3>
+<h2 id="post-install-checks" class="docmd-heading"><a href="#post-install-checks" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Post-install checks</h2>
 <ol>
-<li>Once the <code>docker-compose up</code> command successfully completes, you can check the spun-up containers using <code>docker ps</code></li>
-<li></li>
+<li>Once the <code>docker-compose up</code> command successfully completes, you can check<br>
+the spun-up containers using <code>docker ps</code></li>
 </ol>
 
                 
@@ -954,31 +1037,31 @@
 </span></h2>
     <ul class="toc-list">
       
-        <li class="toc-item toc-level-3">
+        <li class="toc-item toc-level-2">
           <a href="#notes" class="toc-link">Notes</a>
         </li>
       
-        <li class="toc-item toc-level-3">
+        <li class="toc-item toc-level-2">
           <a href="#pre-requisites" class="toc-link">Pre-requisites</a>
         </li>
       
-        <li class="toc-item toc-level-3">
+        <li class="toc-item toc-level-2">
           <a href="#getting-the-vm-up-and-running" class="toc-link">Getting the VM up and running</a>
         </li>
       
-        <li class="toc-item toc-level-3">
+        <li class="toc-item toc-level-2">
           <a href="#installing-debian-on-the-vm" class="toc-link">Installing Debian on the VM</a>
         </li>
       
-        <li class="toc-item toc-level-3">
+        <li class="toc-item toc-level-2">
           <a href="#docker-pre-requisites" class="toc-link">Docker pre-requisites</a>
         </li>
       
-        <li class="toc-item toc-level-3">
+        <li class="toc-item toc-level-2">
           <a href="#installation" class="toc-link">Installation</a>
         </li>
       
-        <li class="toc-item toc-level-3">
+        <li class="toc-item toc-level-2">
           <a href="#post-install-checks" class="toc-link">Post-install checks</a>
         </li>
       
@@ -1011,13 +1094,13 @@
         </div>
       </div>
       
-      <script src="../../assets/js/docmd-main.js?v=mrdug0az"></script>
+      <script src="../../assets/js/docmd-main.js?v=mrdxrgvp"></script>
       
-      <script src="../../assets/js/docmd-git.js?v=mrdug0az"></script>
-      <script src="../../assets/js/docmd-image-lightbox.js?v=mrdug0az" ></script>
+      <script src="../../assets/js/docmd-git.js?v=mrdxrgvp"></script>
+      <script src="../../assets/js/docmd-image-lightbox.js?v=mrdxrgvp" ></script>
 <script src="https://cdn.jsdelivr.net/npm/minisearch@7.2.0/dist/umd/index.min.js" ></script>
-<script src="../../assets/js/docmd-search.js?v=mrdug0az" ></script>
-<script src="../../assets/js/docmd-git.js?v=mrdug0az" type="module"></script>
+<script src="../../assets/js/docmd-search.js?v=mrdxrgvp" ></script>
+<script src="../../assets/js/docmd-git.js?v=mrdxrgvp" type="module"></script>
 
   <!-- Search Modal (Injected by @docmd/plugin-search) -->
   <div id="docmd-search-modal" class="docmd-search-modal" style="display: none;" data-show-confidence="false" data-show-filters="true"

@@ -41,16 +41,15 @@ All services listed below are tested and confirmed to work together:
   }
 
   markdown += `
-
 ## Version Combinations
 
 ### Latest (Development)
 
-\`\`\`
+\`\`\`text
 ThreeTwo: ${versions.services[0]?.latest_release.version}
 Metadata Service: ${versions.services[1]?.latest_release.version}
 Core Service: ${versions.services[2]?.latest_release.version}
-Docker Compose: ${versions.services[3]?.latest_release.version}
+Acquisition Service: ${versions.services[3]?.latest_release.version}
 \`\`\`
 
 **Status**: ${versions.services.some(s => s.latest_release.prerelease) ? '⚠️ Contains prerelease versions' : '✅ All stable'}
@@ -67,6 +66,7 @@ For production environments, use stable (non-prerelease) versions:
 export THREETWO_VERSION="${versions.services[0]?.latest_release.version}"
 export METADATA_SERVICE_VERSION="${versions.services[1]?.latest_release.version}"
 export CORE_SERVICE_VERSION="${versions.services[2]?.latest_release.version}"
+export ACQUISITION_SERVICE_VERSION="${versions.services[3]?.latest_release.version}"
 
 docker-compose -f docker-compose.yml up -d
 \`\`\`
@@ -131,7 +131,7 @@ To ensure all services are compatible:
 
 \`\`\`bash
 # Check all running container versions
-docker ps --format "table {{.Names}}\\t{{.Image}}" | grep -E "(threetwo|metadata|core)"
+docker ps --format "table {{.Names}}\\t{{.Image}}" | grep -E "(threetwo|metadata|core|acquisition)"
 
 # Compare against versions.json
 cat versions.json
@@ -169,4 +169,3 @@ generateCompatibility().catch((error) => {
   console.error('❌ Error generating compatibility doc:', error);
   process.exit(1);
 });
-

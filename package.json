@@ -14,5 +14,8 @@
   "engines": {
     "node": ">=18.0"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "octokit": "^5.0.5"
+  }
 }

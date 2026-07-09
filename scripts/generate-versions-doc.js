@@ -49,7 +49,6 @@ function generateMarkdown(versions, versionTag = 'latest') {
   }
 
   markdown += `
-
 ## Installation
 
 ### Using Docker Compose
@@ -66,6 +65,9 @@ services:
 
   core-service:
     image: frishi/threetwo-core-service:${versions.services[2]?.latest_release.version || 'TAG'}
+
+  acquisition-service:
+    image: frishi/threetwo-acquisition-service:${versions.services[3]?.latest_release.version || 'TAG'}
 \`\`\`
 
 ## Version History
@@ -90,6 +92,7 @@ docker inspect <container-name> | grep -i version
 - **${versions.services[0]?.name}**: [${versions.services[0]?.latest_release.tag}](${versions.services[0]?.latest_release.url})
 - **${versions.services[1]?.name}**: [${versions.services[1]?.latest_release.tag}](${versions.services[1]?.latest_release.url})
 - **${versions.services[2]?.name}**: [${versions.services[2]?.latest_release.tag}](${versions.services[2]?.latest_release.url})
+- **${versions.services[3]?.name}**: [${versions.services[3]?.latest_release.tag}](${versions.services[3]?.latest_release.url})
 `;
 
   return markdown;
@@ -131,4 +134,3 @@ generateAllVersions().catch((error) => {
   console.error('❌ Error generating documentation:', error);
   process.exit(1);
 });
-

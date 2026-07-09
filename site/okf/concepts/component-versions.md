@@ -1,4 +1,15 @@
-# Component Versions - v0.0.1
+---
+type: concept
+title: "Component Versions"
+source: /component-versions/
+path: /component-versions/
+version: latest
+updated: 2026-07-09
+okf:
+  generated_by: "@docmd/plugin-okf"
+  generated_at: "2026-07-09T20:05:02.578Z"
+---
+# Component Versions
 
 > 📦 Last updated: 8/20/2022
 

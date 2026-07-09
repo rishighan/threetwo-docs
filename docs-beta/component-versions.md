@@ -11,7 +11,6 @@
 | [Core Service](https://github.com/rishighan/threetwo-core-service/releases/tag/v0.0.1) | `0.0.1` | 8/20/2022 | `frishi/threetwo-core-service:0.0.1` |
 | [Acquisition Service](https://github.com/rishighan/threetwo-acquisition-service/releases/tag/v0.0.1) | `0.0.1` | 8/20/2022 | `frishi/threetwo-acquisition-service:0.0.1` |
 
-
 ## Installation
 
 ### Using Docker Compose
@@ -28,6 +27,9 @@ services:
 
   core-service:
     image: frishi/threetwo-core-service:0.0.1
+
+  acquisition-service:
+    image: frishi/threetwo-acquisition-service:0.0.1
 ```
 
 ## Version History
@@ -52,4 +54,4 @@ docker inspect <container-name> | grep -i version
 - **ThreeTwo (Main App)**: [v0.0.1](https://github.com/rishighan/threetwo/releases/tag/v0.0.1)
 - **Metadata Service**: [v0.0.1](https://github.com/rishighan/threetwo-metadata-service/releases/tag/v0.0.1)
 - **Core Service**: [v0.0.1](https://github.com/rishighan/threetwo-core-service/releases/tag/v0.0.1)
-
+- **Acquisition Service**: [v0.0.1](https://github.com/rishighan/threetwo-acquisition-service/releases/tag/v0.0.1)
