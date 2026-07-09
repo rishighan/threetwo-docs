@@ -37,9 +37,9 @@ const SERVICES = [
     dockerImagePattern: 'frishi/threetwo-core-service'
   },
   {
-    name: 'Docker Compose',
-    repo: 'rishighan/threetwo-docker-compose',
-    dockerImagePattern: null // No docker image for compose repo
+    name: 'Acquisition Service',
+    repo: 'rishighan/threetwo-acquisition-service',
+    dockerImagePattern: 'frishi/threetwo-acquisition-service'
   }
 ];
 
@@ -120,4 +120,3 @@ fetchAllVersions().catch((error) => {
   console.error('❌ Error fetching versions:', error);
   process.exit(1);
 });
-

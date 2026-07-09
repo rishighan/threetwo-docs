@@ -11,7 +11,7 @@ All services listed below are tested and confirmed to work together:
 | ThreeTwo (Main App) | `0.0.1` | ⚠️ Prerelease |
 | Metadata Service | `0.0.1` | ⚠️ Prerelease |
 | Core Service | `0.0.1` | ⚠️ Prerelease |
-| Docker Compose | `0.0.1` | ⚠️ Prerelease |
+| Acquisition Service | `0.0.1` | ⚠️ Prerelease |
 
 
 ## Version Combinations
@@ -60,7 +60,7 @@ _Check individual service repositories for current issues:_
 - [ThreeTwo (Main App)](rishighan/threetwo/issues)
 - [Metadata Service](rishighan/threetwo-metadata-service/issues)
 - [Core Service](rishighan/threetwo-core-service/issues)
-- [Docker Compose](rishighan/threetwo-docker-compose/issues)
+- [Acquisition Service](rishighan/threetwo-acquisition-service/issues)
 
 ## Breaking Changes
 
@@ -119,7 +119,7 @@ For compatibility questions or issues:
 - **ThreeTwo (Main App)**: [rishighan/threetwo](https://github.com/rishighan/threetwo)
 - **Metadata Service**: [rishighan/threetwo-metadata-service](https://github.com/rishighan/threetwo-metadata-service)
 - **Core Service**: [rishighan/threetwo-core-service](https://github.com/rishighan/threetwo-core-service)
-- **Docker Compose**: [rishighan/threetwo-docker-compose](https://github.com/rishighan/threetwo-docker-compose)
+- **Acquisition Service**: [rishighan/threetwo-acquisition-service](https://github.com/rishighan/threetwo-acquisition-service)
 
 ---
 

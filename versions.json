@@ -42,17 +42,17 @@
       }
     },
     {
-      "name": "Docker Compose",
-      "repo": "rishighan/threetwo-docker-compose",
+      "name": "Acquisition Service",
+      "repo": "rishighan/threetwo-acquisition-service",
       "current_version": "0.0.1",
       "latest_release": {
         "tag": "v0.0.1",
         "version": "0.0.1",
         "date": "2022-08-20T16:49:58Z",
-        "url": "https://github.com/rishighan/threetwo-docker-compose/releases/tag/v0.0.1",
-        "prerelease": true
+        "url": "https://github.com/rishighan/threetwo-acquisition-service/releases/tag/v0.0.1",
+        "prerelease": true,
+        "docker_image": "frishi/threetwo-acquisition-service:0.0.1"
       }
     }
   ]
 }
-

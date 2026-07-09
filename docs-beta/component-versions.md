@@ -9,7 +9,7 @@
 | [ThreeTwo (Main App)](https://github.com/rishighan/threetwo/releases/tag/v0.0.1) | `0.0.1` | 8/20/2022 | `frishi/threetwo:0.0.1` |
 | [Metadata Service](https://github.com/rishighan/threetwo-metadata-service/releases/tag/v0.0.1) | `0.0.1` | 8/20/2022 | `frishi/threetwo-metadata-service:0.0.1` |
 | [Core Service](https://github.com/rishighan/threetwo-core-service/releases/tag/v0.0.1) | `0.0.1` | 8/20/2022 | `frishi/threetwo-core-service:0.0.1` |
-| [Docker Compose](https://github.com/rishighan/threetwo-docker-compose/releases/tag/v0.0.1) | `0.0.1` | 8/20/2022 | `-` |
+| [Acquisition Service](https://github.com/rishighan/threetwo-acquisition-service/releases/tag/v0.0.1) | `0.0.1` | 8/20/2022 | `frishi/threetwo-acquisition-service:0.0.1` |
 
 
 ## Installation
