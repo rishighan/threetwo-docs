@@ -1,19 +1,5 @@
 export default {
   title: "ThreeTwo!",
-  tagline: "Start Flipping!",
-  description: "ThreeTwo Documentation - Your guide to getting started",
-
-  // Site configuration
-  site: {
-    url: "https://rishighan.github.io/threetwo-docs/",
-    baseUrl: "/threetwo-docs/",
-  },
-
-  // GitHub configuration for edit links
-  github: {
-    owner: "rishighan",
-    repo: "threetwo-docs",
-  },
 
   // Theme configuration
   theme: {
@@ -31,26 +17,46 @@ export default {
       title: "Documentation",
       path: "/intro",
       children: [
-        { "title": "Introduction", "path": "/intro", "icon": "book" },
-        { "title": "Install on unRaid", "path": "/unraid_install", "icon": "download" },
-        { "title": "Docker Compose", "path": "/unraid_dockercompose", "icon": "package" },
-        { "title": "Technical Architecture", "path": "/architecture", "icon": "layers" },
-        { "title": "Resources & Help", "path": "/resources", "icon": "help-circle" }
-      ]
+        { title: "Introduction", path: "/intro", icon: "book" },
+        {
+          title: "Install on unRaid",
+          path: "/unraid_install",
+          icon: "download",
+        },
+        {
+          title: "Docker Compose",
+          path: "/unraid_dockercompose",
+          icon: "package",
+        },
+        {
+          title: "Technical Architecture",
+          path: "/architecture",
+          icon: "layers",
+        },
+        { title: "Resources & Help", path: "/resources", icon: "help-circle" },
+      ],
     },
     {
       title: "Versions & Compatibility",
       children: [
-        { "title": "Component Versions", "path": "/component-versions", "icon": "package-open" },
-        { "title": "Compatibility Matrix", "path": "/COMPATIBILITY", "icon": "gitcompare" }
-      ]
+        {
+          title: "Component Versions",
+          path: "/component-versions",
+          icon: "package-open",
+        },
+        {
+          title: "Compatibility Matrix",
+          path: "/COMPATIBILITY",
+          icon: "git-compare",
+        },
+      ],
     },
     {
-      "title": "GitHub",
-      "path": "https://github.com/rishighan/threetwo",
-      "icon": "github",
-      "external": true
-    }
+      title: "GitHub",
+      path: "https://github.com/rishighan/threetwo",
+      icon: "github",
+      external: true,
+    },
   ],
 
   // Versioning Configuration
@@ -74,11 +80,5 @@ export default {
         label: "v0.0.1",
       },
     ],
-  },
-
-  // Build settings
-  build: {
-    outDir: "./site",
-    staticDir: "./static",
   },
 };
