@@ -9,7 +9,7 @@ title: Introduction
 `ThreeTwo!` is a comic book curation app.
 
 It aims to help you organize your comic book collection and automate various
-aspects of acquiring new comic books.
+aspects of curating comics.
 
 It is a culmination of ideas I developed over the past couple of years using
 various pieces of software to achieve the stated goal of curating comic books.
@@ -18,8 +18,10 @@ software used to manage comic book collections.
 
 ## Philosophy
 
-Curation is a disease of the mind, albeit a disease with a purpose. You want to
-be able to peruse your collection, and enjoy the process of doing so.
+Whether you collect comics because you are a hoarder, or you suffer from the
+vagaries of corporate greed, curation is a solace. A safe space, meant for
+collecting the artifacts that hold a special place in your heart. ThreeTwo
+aspires to be the means to that end, nothing more.
 
 ### Discovery
 
