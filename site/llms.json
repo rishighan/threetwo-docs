@@ -1,0 +1,96 @@
+{
+  "title": "ThreeTwo!",
+  "description": "ThreeTwo Documentation - Your guide to getting started",
+  "pages": [
+    {
+      "title": "Technical Architecture",
+      "url": "/architecture/",
+      "description": "",
+      "priority": "medium"
+    },
+    {
+      "title": "Introduction",
+      "url": "/intro/",
+      "description": "",
+      "priority": "medium"
+    },
+    {
+      "title": "Resources & Help",
+      "url": "/resources/",
+      "description": "",
+      "priority": "medium"
+    },
+    {
+      "title": "Install ThreeTwo! on unRAID with the docker-compose plugin",
+      "url": "/unraid_dockercompose/",
+      "description": "",
+      "priority": "medium"
+    },
+    {
+      "title": "Install ThreeTwo! on unRaid",
+      "url": "/unraid_install/",
+      "description": "",
+      "priority": "medium"
+    },
+    {
+      "title": "Technical Architecture",
+      "url": "/v0.0.1-beta/architecture/",
+      "description": "",
+      "priority": "medium"
+    },
+    {
+      "title": "Introduction",
+      "url": "/v0.0.1-beta/intro/",
+      "description": "",
+      "priority": "medium"
+    },
+    {
+      "title": "Resources & Help",
+      "url": "/v0.0.1-beta/resources/",
+      "description": "",
+      "priority": "medium"
+    },
+    {
+      "title": "Install ThreeTwo! on unRAID with the docker-compose plugin",
+      "url": "/v0.0.1-beta/unraid_dockercompose/",
+      "description": "",
+      "priority": "medium"
+    },
+    {
+      "title": "Install ThreeTwo! on unRaid",
+      "url": "/v0.0.1-beta/unraid_install/",
+      "description": "",
+      "priority": "medium"
+    },
+    {
+      "title": "Technical Architecture",
+      "url": "/v0.0.1/architecture/",
+      "description": "",
+      "priority": "medium"
+    },
+    {
+      "title": "Introduction",
+      "url": "/v0.0.1/intro/",
+      "description": "",
+      "priority": "medium"
+    },
+    {
+      "title": "Resources & Help",
+      "url": "/v0.0.1/resources/",
+      "description": "",
+      "priority": "medium"
+    },
+    {
+      "title": "Install ThreeTwo! on unRAID with the docker-compose plugin",
+      "url": "/v0.0.1/unraid_dockercompose/",
+      "description": "",
+      "priority": "medium"
+    },
+    {
+      "title": "Install ThreeTwo! on unRaid",
+      "url": "/v0.0.1/unraid_install/",
+      "description": "",
+      "priority": "medium"
+    }
+  ]
+}

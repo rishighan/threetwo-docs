@@ -1,0 +1,1233 @@
+<!--
+  ---------------------------------------------------------------
+  docmd : the zero-config documentation engine.
+  @website https://docmd.io
+  [docmd-source] - Please do not remove this header.
+  ---------------------------------------------------------------
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="generator" content="docmd v0.8.10">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>/**
+ * --------------------------------------------------------------------
+ * docmd : the zero-config documentation engine.
+ *
+ * @package     @docmd/core (and ecosystem)
+ * @website     https://docmd.io
+ * @repository  https://github.com/docmd-io/docmd
+ * @license     MIT
+ * @copyright   Copyright (c) 2025-present docmd.io
+ *
+ * [docmd-source] - Please do not remove this header.
+ * --------------------------------------------------------------------
+ */
+
+(function () {
+  try {
+    // 1. Determine Theme
+    //
+    // Resolve from three sources, in priority order:
+    //   1. localStorage explicit user choice (light / dark)
+    //   2. window.DOCMD_APPEARANCE  (current canonical name, set by EJS templates)
+    //   3. window.DOCMD_DEFAULT_MODE (legacy alias kept for pre-0.8.7 outputs)
+    //   4. 'light' as the final fallback
+    //
+    // Note: localStorage is only honoured when it holds an explicit
+    // 'light' or 'dark' value. A stored 'system' value (from a prior
+    // session where the user picked "follow system") must NOT win over
+    // a freshly resolved config value — the resolved value will itself
+    // be 'system' in that case and the OS preference check below takes
+    // over, so this is a no-op for the in-session behaviour but keeps
+    // any future storage migration simple.
+    var localValue = localStorage.getItem('docmd-theme');
+    var configValue = window.DOCMD_APPEARANCE
+      || window.DOCMD_DEFAULT_MODE
+      || 'light';
+    var theme = (localValue === 'light' || localValue === 'dark')
+      ? localValue
+      : configValue;
+
+    if (theme === 'system') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    // 2. Apply to Root
+    document.documentElement.setAttribute('data-theme', theme);
+
+    // 3. Highlight.js Toggle Strategy
+    var lightLink = document.getElementById('hljs-light');
+    var darkLink = document.getElementById('hljs-dark');
+
+    if (lightLink && darkLink) {
+      if (theme === 'dark') {
+        lightLink.disabled = true;
+        darkLink.disabled = false;
+      } else {
+        lightLink.disabled = false;
+        darkLink.disabled = true;
+      }
+    }
+
+    document.documentElement.style.visibility = "visible";
+  } catch (e) {
+    document.documentElement.style.visibility = "visible";
+    console.error('Theme init failed', e);
+  }
+})();</script>
+    <style>
+      html {
+        visibility: hidden;
+      }
+    </style>
+    
+    <script>
+      var root = "../../";
+      if (root && !root.endsWith('/')) root += '/';
+      if (root === '') root = './';
+      window.DOCMD_ROOT = root;
+
+      window.DOCMD_SITE_ROOT = "/";
+
+      window.DOCMD_APPEARANCE = "system";
+      window.DOCMD_VERSION_ROOT = "/v0.0.1-beta/";
+      window.DOCMD_BASE = "/";
+      window.DOCMD_LOCALE = "";
+      window.DOCMD_DEFAULT_LOCALE = "";
+    </script>
+    <title>
+      Install ThreeTwo! on unRAID with the docker-compose plugin : ThreeTwo!
+    </title>
+
+    <base href="/">
+    
+    <link rel="stylesheet" href="../../assets/css/docmd-main.css?v=mrdu8j8g">
+    
+    <link rel="stylesheet" href="../../assets/css/docmd-highlight-light.css?v=mrdu8j8g" id="hljs-light" >
+    <link rel="stylesheet" href="../../assets/css/docmd-highlight-dark.css?v=mrdu8j8g" id="hljs-dark" disabled>
+    
+    
+<meta name="description" content="">
+<link rel="canonical" href="/v0.0.1-beta/unraid_dockercompose/">
+<meta property="og:title" content="Install ThreeTwo! on unRAID with the docker-compose plugin - ThreeTwo!">
+<meta property="og:description" content="">
+<meta property="og:url" content="/v0.0.1-beta/unraid_dockercompose/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Install ThreeTwo! on unRAID with the docker-compose plugin - ThreeTwo!">
+<meta name="twitter:description" content="">
+
+
+
+<link rel="stylesheet" href="../../assets/css/docmd-git.css?v=mrdu8j8g" >
+<link rel="stylesheet" href="../../assets/css/docmd-openapi.css?v=mrdu8j8g" >
+
+    
+    <script>/**
+ * --------------------------------------------------------------------
+ * docmd : the zero-config documentation engine.
+ *
+ * @package     @docmd/core (and ecosystem)
+ * @website     https://docmd.io
+ * @repository  https://github.com/docmd-io/docmd
+ * @license     MIT
+ * @copyright   Copyright (c) 2025-present docmd.io
+ *
+ * [docmd-source] - Please do not remove this header.
+ * --------------------------------------------------------------------
+ */
+
+(function () {
+  try {
+    // 1. Determine Theme
+    //
+    // Resolve from three sources, in priority order:
+    //   1. localStorage explicit user choice (light / dark)
+    //   2. window.DOCMD_APPEARANCE  (current canonical name, set by EJS templates)
+    //   3. window.DOCMD_DEFAULT_MODE (legacy alias kept for pre-0.8.7 outputs)
+    //   4. 'light' as the final fallback
+    //
+    // Note: localStorage is only honoured when it holds an explicit
+    // 'light' or 'dark' value. A stored 'system' value (from a prior
+    // session where the user picked "follow system") must NOT win over
+    // a freshly resolved config value — the resolved value will itself
+    // be 'system' in that case and the OS preference check below takes
+    // over, so this is a no-op for the in-session behaviour but keeps
+    // any future storage migration simple.
+    var localValue = localStorage.getItem('docmd-theme');
+    var configValue = window.DOCMD_APPEARANCE
+      || window.DOCMD_DEFAULT_MODE
+      || 'light';
+    var theme = (localValue === 'light' || localValue === 'dark')
+      ? localValue
+      : configValue;
+
+    if (theme === 'system') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    // 2. Apply to Root
+    document.documentElement.setAttribute('data-theme', theme);
+
+    // 3. Highlight.js Toggle Strategy
+    var lightLink = document.getElementById('hljs-light');
+    var darkLink = document.getElementById('hljs-dark');
+
+    if (lightLink && darkLink) {
+      if (theme === 'dark') {
+        lightLink.disabled = true;
+        darkLink.disabled = false;
+      } else {
+        lightLink.disabled = false;
+        darkLink.disabled = true;
+      }
+    }
+
+    document.documentElement.style.visibility = "visible";
+  } catch (e) {
+    document.documentElement.style.visibility = "visible";
+    console.error('Theme init failed', e);
+  }
+})();</script>
+  </head>
+  <body
+    class="sidebar-collapsible"
+    data-default-collapsed="false"
+    data-copy-code-enabled="true" data-spa-enabled="true" data-source-file="docs-beta/unraid_dockercompose.md">
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    
+    
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          
+            <h1><a href="../../">
+                ThreeTwo!
+              </a></h1>
+          
+          <span class="mobile-view sidebar-menu-button float-right">
+            
+<svg class="lucide-icon icon-menu " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-menu"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 5h16" />
+  <path d="M4 12h16" />
+  <path d="M4 19h16" />
+</svg>
+
+          </span>
+        </div>
+        <div class="sidebar-top-group">
+          
+          
+          
+            <div class="sidebar-version-wrapper">
+              
+
+
+<div class="docmd-version-dropdown">
+  <button class="version-dropdown-toggle" aria-expanded="false" aria-label="Select Version">
+    
+<svg class="lucide-icon icon-git-branch version-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-git-branch"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 6a9 9 0 0 0-9 9V3" />
+  <circle cx="18" cy="6" r="3" />
+  <circle cx="6" cy="18" r="3" />
+</svg>
+
+    <span class="version-label">
+      v0.0.1-beta
+    </span>
+    
+<svg class="lucide-icon icon-chevron-down version-chevron" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-down"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg>
+
+  </button>
+  <ul class="version-dropdown-menu">
+    
+    <li>
+      <a href="/" 
+         class="version-dropdown-item " 
+         data-spa-ignore
+         data-version-root="/">
+        Latest (Development) <span class="version-latest-badge">Latest</span>
+        
+      </a>
+    </li>
+    
+    <li>
+      <a href="/v0.0.1-beta/" 
+         class="version-dropdown-item active" 
+         data-spa-ignore
+         data-version-root="/v0.0.1-beta/">
+        v0.0.1-beta
+        
+          
+<svg class="lucide-icon icon-check version-check" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-check"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg>
+
+        
+      </a>
+    </li>
+    
+    <li>
+      <a href="/v0.0.1/" 
+         class="version-dropdown-item " 
+         data-spa-ignore
+         data-version-root="/v0.0.1/">
+        v0.0.1
+        
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+            </div>
+          
+          
+        </div>
+        
+
+<nav class="sidebar-nav" aria-label="Main Navigation">
+  <ul>
+    
+      <li class="active-parent collapsible expanded nav-group"  aria-expanded="true" >
+      
+        <a href="../../v0.0.1-beta/intro/" class=" nav-group"
+          >
+          
+          <span class="nav-item-title">
+            Documentation
+            </span>
+          
+            <span class="collapse-icon-wrapper">
+<svg class="lucide-icon icon-chevron-right collapse-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</span>
+          
+          
+        </a>
+        
+
+        
+          <ul class="submenu">
+            
+      <li class="" >
+      
+        <a href="../../v0.0.1-beta/intro/" class=" "
+          >
+           
+<svg class="lucide-icon icon-book " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-book"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
+</svg>
+
+          
+          <span class="nav-item-title">
+            Introduction
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../../v0.0.1-beta/unraid_install/" class=" "
+          >
+           
+<svg class="lucide-icon icon-download " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-download"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 15V3" />
+  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+  <path d="m7 10 5 5 5-5" />
+</svg>
+
+          
+          <span class="nav-item-title">
+            Install on unRaid
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="active" >
+      
+        <a href="../../v0.0.1-beta/unraid_dockercompose/" class="active "
+          >
+           
+<svg class="lucide-icon icon-package " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-package"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" />
+  <path d="M12 22V12" />
+  <polyline points="3.29 7 12 12 20.71 7" />
+  <path d="m7.5 4.27 9 5.15" />
+</svg>
+
+          
+          <span class="nav-item-title">
+            Docker Compose
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../../v0.0.1-beta/architecture/" class=" "
+          >
+           
+<svg class="lucide-icon icon-layers " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-layers"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" />
+  <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" />
+  <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" />
+</svg>
+
+          
+          <span class="nav-item-title">
+            Technical Architecture
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../../v0.0.1-beta/resources/" class=" "
+          >
+           
+<svg class="lucide-icon icon-help-circle " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-circle-question-mark"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+  <path d="M12 17h.01" />
+</svg>
+
+          
+          <span class="nav-item-title">
+            Resources &amp; Help
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+          </ul>
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="https://github.com/rishighan/threetwo" class=" "
+          target=&quot;_blank&quot; rel=&quot;noopener&quot;>
+           
+<svg class="lucide-icon icon-github " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-github"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+  <path d="M9 18c-4.51 2-5-2-7-2" />
+</svg>
+
+          
+          <span class="nav-item-title">
+            GitHub
+            </span>
+          
+           
+<svg class="lucide-icon icon-external-link nav-external-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-external-link"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+</svg>
+
+          
+        </a>
+        
+
+        
+      </li>
+    
+  </ul>
+</nav>
+        <div class="sidebar-bottom-group mt-auto">
+          
+          
+          
+          
+        </div>
+      </aside>
+      
+      
+      
+      <div class="main-content-wrapper">
+        
+        
+          <header class="page-header">
+            <div class="header-left">
+              
+                <button id="sidebar-toggle-button" class="sidebar-toggle-button"
+                  aria-label="Toggle Sidebar">
+                  
+<svg class="lucide-icon icon-chevron-left " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-left"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m15 18-6-6 6-6" />
+</svg>
+
+                </button>
+              
+              <div class="header-titles-wrapper">
+                <span class="header-title">
+                  Install ThreeTwo! on unRAID with the docker-compose plugin
+                </span>
+              </div>
+            </div>
+            <div class="header-right">
+              
+                
+
+
+<div class="docmd-options-menu">
+    
+    <button class="docmd-search-trigger" aria-label="Search">
+        
+<svg class="lucide-icon icon-search " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-search"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21 21-4.34-4.34" />
+  <circle cx="11" cy="11" r="8" />
+</svg>
+
+        <span class="search-label">Search</span>
+        <span class="search-keys"><kbd class="docmd-kbd">⌘</kbd><kbd class="docmd-kbd">K</kbd></span>
+    </button>
+    
+
+    
+
+    
+
+    
+    <button class="theme-toggle-button" aria-label="Toggle theme">
+        
+<svg class="lucide-icon icon-sun icon-sun" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-sun"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="4" />
+  <path d="M12 2v2" />
+  <path d="M12 20v2" />
+  <path d="m4.93 4.93 1.41 1.41" />
+  <path d="m17.66 17.66 1.41 1.41" />
+  <path d="M2 12h2" />
+  <path d="M20 12h2" />
+  <path d="m6.34 17.66-1.41 1.41" />
+  <path d="m19.07 4.93-1.41 1.41" />
+</svg>
+ 
+<svg class="lucide-icon icon-moon icon-moon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-moon"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+</svg>
+
+    </button>
+    
+
+    
+</div>
+
+              
+            </div>
+          </header>
+        
+        <div class="content-theme-cover">
+          <main class="content-area" id="main-content">
+            <div class="content-layout">
+              <div class="main-content">
+                <div class="docmd-breadcrumbs-row">
+                  <div id="docmd-raw-markdown" data-content="---%0Asidebar_position%3A%202%20%0Aid%3A%20unRAID_dockercompose%0Atitle%3A%20Install%20ThreeTwo!%20on%20unRAID%20with%20the%20docker-compose%20plugin%0A---%0A%0A%23%23%23%20Notes%0A%0AThis%20guide%20goes%20over%20ThreeTwo!%20installation%20on%20unRAID%20using%20the%20%5Bdocker-compose%20manager%5D(https%3A%2F%2Fforums.unRAID.net%2Ftopic%2F114415-plugin-docker-compose-manager%2F)%20plugin.%20Currently%2C%20this%20is%20the%20recommended%20approach%20for%20unRAID%20users.%0A%0AWith%20the%20help%20of%20this%20plugin%2C%20you%20are%20able%20to%20pull%20the%20entire%20ThreeTwo!%20%60docker-compose%60%20stack%20up%2C%20down%20with%20the%20click%20of%20a%20button.%20It%20abstracts%20away%20a%20lot%20of%20complexity%20associated%20with%20writing%20out%20commands%20in%20the%20console.%0A%0AThat%20said%2C%20the%20plugin%20is%20still%20in%20beta%2C%20so%20you%20may%20experience%20strange%20behavior.%20%20%0A%0A%23%23%23%20Pre-requisites%0A%0AFirst%20things%20first%2C%20let&#039;s%20go%20over%20what%20the%20pre-requisites%20are%3A%0A%0A1.%20The%20%60docker-compose%60%20configuration%20for%20ThreeTwo!%20now%20resides%20in%20its%20own%20repo%20here%3A%20https%3A%2F%2Fgithub.com%2Frishighan%2Fthreetwo-docker-compose%20You%20will%20be%20using%20this%20as%20reference.%0A2.%20A%20working%20%60AirDC%2B%2B%60%20install%20is%20necessary%20for%20%60DC%2B%2B%60%20searching%2Fdownloading%20to%20work.%20You%20can%20install%20it%20through%20the%20unRAID%20via%20the%20CA%20store%20or%20via%20a%20%5Bdocker%5D(https%3A%2F%2Fairdcpp.net%2Fdownload%23linux-nas-docker-other)%0A3.%20%60comics%60%20and%20%60userdata%60%20folders.%0A%20%20%201.%20The%20%60comics%60%20folder%20_must_%20be%20the%20folder%20%60AirDC%2B%2B%60%20downloads%20comics%20to.%0A%20%20%202.%20Create%20the%20%60userdata%60%20folder%20under%20%60%2Fmnt%2Fuser%2Fappdata%2Fthreetwo%60%0A4.%20To%20get%20ComicVine%20to%20work%20for%20metadata%20scraping%20and%20other%20functions%2C%20you%20_must_%20have%20a%20ComicVine%20API%20key.%20You%20can%20get%20one%20%5Bhere%5D(https%3A%2F%2Fcomicvine.gamespot.com%2Fapi%2F).%20Metadata%20scraping%20will%20not%20work%20unless%20you%20supply%20an%20API%20key.%0A5.%20Open%20an%20unRAID%20terminal%20and%20create%20an%20%60.env%60%20file%3A%0A%20%20%201.%20Run%20this%20command%3A%20%60nano%20%2Fboot%2Fconfig%2Fplugins%2Fcompose.manager%2Fprojects%2FThreeTwo%2F.env%60%0A%20%20%202.%20Paste%20this%20into%20the%20file%2C%20replacing%20anything%20within%20%60%3C%3E%60%20with%20actual%20values%3A%0A%20%20%20%60%60%60bash%0A%20%20%20UNDERLYING_HOSTNAME%3D%3CUNRAID_HOSTNAME%3E%0A%20%20%20COMICS_DIRECTORY%3D%3CPATH_TO_COMICS_DIRECTORY%3E%0A%20%20%20USERDATA_DIRECTORY%3D%2Fmnt%2Fuser%2Fappdata%2Fthreetwo%2Fuserdata%0A%0A%20%20%20COMICVINE_API_KEY%3D%3CYOUR_COMICVINE_API_KEY%3E%0A%0A%20%20%20LOGGER%3Dtrue%0A%20%20%20LOGLEVEL%3Dinfo%0A%20%20%20SERVICEDIR%3Ddist%2Fservices%0A%0A%20%20%20CHOKIDAR_USEPOLLING%3Dtrue%0A%0A%20%20%20UNRAR_BIN_PATH%3D%2Fusr%2Fbin%2Funrar%0A%20%20%20SEVENZ_BINARY_PATH%3D%2Fusr%2Fbin%2F7za%0A%20%20%20MONGO_URI%3Dmongodb%3A%2F%2Fdb%3A27017%2Fthreetwo%0A%20%20%20ELASTICSEARCH_URI%3Dhttp%3A%2F%2Felasticsearch%3A9200%0A%20%20%20REDIS_URI%3Dredis%3A%2F%2Fredis%3A6379%0A%20%20%20TRANSPORTER%3Dredis%3A%2F%2Fredis%3A6379%0A%20%20%20CACHER%3DMemory%0A%20%20%20%20%20%20%60%60%60%0A%0A%23%23%23%20Installation%0A%0A1.%20Install%20the%20%60docker-compose%20manager%60%20plugin%20from%20the%20unRAID%20CA%20store.%20After%20installation%2C%20you%20can%20find%20the%20plugin%20UI%20under%20the%20%60Docker%60%20tab.%0A2.%20Create%20a%20new%20stack%2C%20give%20it%20a%20name.%0A3.%20Hover%20over%20the%20gear%20next%20to%20it%20and%20click%20on%20%60Edit%20Stack%60.%0A4.%20Copy-paste%20this%20into%20the%20textarea%3A%0A%60%60%60yaml%0Aversion%3A%20%223.7%22%0A%0Ax-userdata-volume%3A%20%26userdata-volume%0A%20%20type%3A%20bind%0A%20%20source%3A%20%24%7BUSERDATA_DIRECTORY%7D%0A%20%20target%3A%20%2Fuserdata%0A%0Ax-comics-volume%3A%20%26comics-volume%0A%20%20type%3A%20bind%0A%20%20source%3A%20%24%7BCOMICS_DIRECTORY%7D%0A%20%20target%3A%20%2Fcomics%0A%0Aservices%3A%0Athreetwo%3A%0A%20%20%20build%3A%0A%20%20%20%20%20%20context%3A%20https%3A%2F%2Fgithub.com%2Frishighan%2Fthreetwo.git%0A%20%20%20%20%20%20dockerfile%3A%20Dockerfile%0A%20%20%20image%3A%20frishi%2Fthreetwo%0A%20%20%20container_name%3A%20threetwo-ui%0A%20%20%20env_file%3A%20%2Fboot%2Fconfig%2Fplugins%2Fcompose.manager%2Fprojects%2FThreeTwo%2F.env%0A%20%20%20restart%3A%20unless-stopped%0A%20%20%20ports%3A%0A%20%20%20%20%20%20-%20%228050%3A8050%22%0A%20%20%20%20%20%20-%20%223050%3A3050%22%0A%20%20%20links%3A%0A%20%20%20%20%20%20-%20core-services%0A%20%20%20depends_on%3A%0A%20%20%20%20%20%20-%20db%0A%20%20%20%20%20%20-%20elasticsearch%0A%20%20%20%20%20%20-%20redis%0A%20%20%20networks%3A%0A%20%20%20%20%20%20-%20proxy%0A%0Ametadata-service%3A%0A%20%20%20build%3A%0A%20%20%20%20%20%20context%3A%20https%3A%2F%2Fgithub.com%2Frishighan%2Fthreetwo-metadata-service.git%0A%20%20%20image%3A%20frishi%2Fthreetwo-metadata-service%0A%20%20%20container_name%3A%20metadata-service%0A%20%20%20ports%3A%0A%20%20%20%20%20%20-%20%223080%3A3080%22%0A%20%20%20environment%3A%0A%20%20%20%20%20%20SERVICES%3A%20api%2Ccomicvine%0A%20%20%20env_file%3A%20%2Fboot%2Fconfig%2Fplugins%2Fcompose.manager%2Fprojects%2FThreeTwo%2F.env%0A%20%20%20depends_on%3A%0A%20%20%20%20%20%20-%20redis%0A%20%20%20volumes%3A%0A%20%20%20%20%20%20-%20*comics-volume%0A%20%20%20%20%20%20-%20*userdata-volume%0A%20%20%20networks%3A%0A%20%20%20%20%20%20-%20proxy%0A%0Acore-services%3A%0A%20%20%20build%3A%0A%20%20%20%20%20%20context%3A%20https%3A%2F%2Fgithub.com%2Frishighan%2Fthreetwo-core-service.git%0A%20%20%20image%3A%20frishi%2Fthreetwo-core-service%0A%20%20%20container_name%3A%20core-services%0A%20%20%20ports%3A%0A%20%20%20%20%20%20-%20%223000%3A3000%22%0A%20%20%20%20%20%20-%20%223001%3A3001%22%0A%20%20%20depends_on%3A%0A%20%20%20%20%20%20-%20db%0A%20%20%20%20%20%20-%20redis%0A%20%20%20%20%20%20-%20elasticsearch%0A%20%20%20environment%3A%0A%20%20%20%20%20%20name%3A%20core-services%0A%20%20%20%20%20%20SERVICES%3A%20api%2Clibrary%2Cimportqueue%2Csettings%2Csearch%2Csocket%2Cimagetransformation%2Copds%0A%20%20%20env_file%3A%20%2Fboot%2Fconfig%2Fplugins%2Fcompose.manager%2Fprojects%2FThreeTwo%2F.env%0A%20%20%20volumes%3A%0A%20%20%20%20%20%20-%20*comics-volume%0A%20%20%20%20%20%20-%20*userdata-volume%0A%0A%20%20%20networks%3A%0A%20%20%20%20%20%20-%20proxy%0A%0Adb%3A%0A%20%20%20image%3A%20%22bitnami%2Fmongodb%3Alatest%22%0A%20%20%20container_name%3A%20database%0A%20%20%20networks%3A%0A%20%20%20%20%20%20-%20proxy%0A%20%20%20ports%3A%0A%20%20%20%20%20%20-%20%2227017%3A27017%22%0A%20%20%20volumes%3A%0A%20%20%20%20%20%20-%20%22mongodb_data%3A%2Fbitnami%2Fmongodb%22%0A%0Aredis%3A%0A%20%20%20image%3A%20%22bitnami%2Fredis%3Alatest%22%0A%20%20%20container_name%3A%20queue%0A%20%20%20environment%3A%0A%20%20%20%20%20%20ALLOW_EMPTY_PASSWORD%3A%20%22yes%22%0A%20%20%20networks%3A%0A%20%20%20%20%20%20-%20proxy%0A%20%20%20ports%3A%0A%20%20%20%20%20%20-%20%226379%3A6379%22%0A%0Aelasticsearch%3A%0A%20%20%20image%3A%20docker.elastic.co%2Felasticsearch%2Felasticsearch%3A7.16.2%0A%20%20%20container_name%3A%20elasticsearch%0A%20%20%20environment%3A%0A%20%20%20%20%20%20-%20%22discovery.type%3Dsingle-node%22%0A%20%20%20%20%20%20-%20%22ES_JAVA_OPTS%3D-Xms512m%20-Xmx512m%22%0A%20%20%20%20%20%20-%20%22xpack.security.enabled%3Dtrue%22%0A%20%20%20%20%20%20-%20%22xpack.security.authc.api_key.enabled%3Dtrue%22%0A%20%20%20%20%20%20-%20%22ELASTIC_PASSWORD%3Dpassword%22%0A%20%20%20ulimits%3A%0A%20%20%20%20%20%20memlock%3A%0A%20%20%20%20%20%20soft%3A%20-1%0A%20%20%20%20%20%20hard%3A%20-1%0A%20%20%20ports%3A%0A%20%20%20%20%20%20-%209200%3A9200%0A%20%20%20networks%3A%0A%20%20%20%20%20%20-%20proxy%0A%0Anetworks%3A%0Aproxy%3A%0A%20%20%20external%3A%20true%0A%0Avolumes%3A%0Amongodb_data%3A%0A%20%20%20driver%3A%20local%0Aelastic%3A%0A%20%20driver%3A%20local%0A%20%20%20%60%60%60%0A%0A5.%20Click%20%60Save%20Changes%60%0A6.%20Click%20%60Compose%20Up%60%20and%20check%20for%20errors.%0A7.%20If%20all%20goes%20well%2C%20you%20should%20see%20the%20following%20containers%20appear%20as%20icons%20without%20images%20in%20the%20unRAID%20%60Docker%20Containers%60%20panel%3A%0A%20%20%201.%20%60threetwo-ui%60%0A%20%20%202.%20%60core-services%60%0A%20%20%203.%20%60metadata-service%60%0A%20%20%204.%20%60elasticsearch%60%0A%20%20%205.%20%60database%60%0A%20%20%206.%20%60queue%60%0A8.%20You%20can%20look%20at%20the%20logs%20for%20these%20containers%20by%20clicking%20on%20their%20icons%20and%20then%20%60Logs%60%0A%0A%23%23%23%20Ports%0A%0A1.%20%60threetwo-ui%60%2C%20runs%20on%20port%208050%0A2.%20%60threetwo-core-service%60%20on%203000%0A3.%20%60threetwo-metadata-service%60%20on%203080%0A%0A%23%23%23%20Getting%20Updates%0A%0AGo%20to%20the%20%60Docker%20Containers%60%20tab%20from%20the%20unRAID%20web%20UI%3A%0A%0A1.%20Click%20on%20%60Compose%20Down%60%2C%20and%20let%20the%20command%20finish%20running.%0A2.%20Click%20on%20%60Compose%20Pull%60%2C%20and%20let%20it%20finish%20running.%0A3.%20Click%20on%20%60Compose%20Up%60%20to%20bring%20up%20the%20stack.%20" style="display: none;"></div>
+                  
+                    <nav aria-label="breadcrumb" class="docmd-breadcrumbs">
+                      <ol>
+                        
+                        
+                          <li class="breadcrumb-item " >
+                            
+                              <a href="../../v0.0.1-beta/intro/">Documentation</a>
+                            
+                            
+                              <span class="breadcrumb-separator">
+<svg class="lucide-icon icon-chevron-right " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</span>
+                            
+                          </li>
+                        
+                          <li class="breadcrumb-item active" aria-current=&quot;page&quot;>
+                            
+                              <span>Docker Compose</span>
+                            
+                            
+                          </li>
+                        
+                      </ol>
+                    </nav>
+                  
+
+                  
+                    <div class="docmd-copy-widgets">
+                      
+                        <button class="docmd-copy-btn docmd-copy-raw-btn" data-copied="Copied!" title="Copy Markdown" aria-label="Copy Markdown">
+                          <span class="docmd-btn-icon">
+<svg class="lucide-icon icon-copy " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-copy"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+</svg>
+</span>
+                        </button>
+                      
+                      
+                        <button class="docmd-copy-btn docmd-copy-context-btn" data-copied="Copied!" title="Copy Context">
+                          <span class="docmd-btn-icon">
+<svg class="lucide-icon icon-message-square " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-message-square"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" />
+</svg>
+</span>
+                          <span class="docmd-btn-text">Copy Context</span>
+                        </button>
+                      
+                    </div>
+                  
+                </div>
+                
+                <h3 id="notes" class="docmd-heading"><a href="#notes" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Notes</h3>
+<p>This guide goes over ThreeTwo! installation on unRAID using the <a href="https://forums.unRAID.net/topic/114415-plugin-docker-compose-manager/">docker-compose manager</a> plugin. Currently, this is the recommended approach for unRAID users.</p>
+<p>With the help of this plugin, you are able to pull the entire ThreeTwo! <code>docker-compose</code> stack up, down with the click of a button. It abstracts away a lot of complexity associated with writing out commands in the console.</p>
+<p>That said, the plugin is still in beta, so you may experience strange behavior.</p>
+<h3 id="pre-requisites" class="docmd-heading"><a href="#pre-requisites" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Pre-requisites</h3>
+<p>First things first, let’s go over what the pre-requisites are:</p>
+<ol>
+<li>The <code>docker-compose</code> configuration for ThreeTwo! now resides in its own repo here: <a href="https://github.com/rishighan/threetwo-docker-compose">https://github.com/rishighan/threetwo-docker-compose</a> You will be using this as reference.</li>
+<li>A working <code>AirDC++</code> install is necessary for <code>DC++</code> searching/downloading to work. You can install it through the unRAID via the CA store or via a <a href="https://airdcpp.net/download#linux-nas-docker-other">docker</a></li>
+<li><code>comics</code> and <code>userdata</code> folders.
+<ol>
+<li>The <code>comics</code> folder <em>must</em> be the folder <code>AirDC++</code> downloads comics to.</li>
+<li>Create the <code>userdata</code> folder under <code>/mnt/user/appdata/threetwo</code></li>
+</ol>
+</li>
+<li>To get ComicVine to work for metadata scraping and other functions, you <em>must</em> have a ComicVine API key. You can get one <a href="https://comicvine.gamespot.com/api/">here</a>. Metadata scraping will not work unless you supply an API key.</li>
+<li>Open an unRAID terminal and create an <code>.env</code> file:
+<ol>
+<li>Run this command: <code>nano /boot/config/plugins/compose.manager/projects/ThreeTwo/.env</code></li>
+<li>Paste this into the file, replacing anything within <code>&lt;&gt;</code> with actual values:</li>
+</ol>
+<pre class="hljs"><code class="language-bash">UNDERLYING_HOSTNAME<span class="hljs-punctuation">=&lt;</span>UNRAID_HOSTNAME<span class="hljs-punctuation">&gt;</span>
+COMICS_DIRECTORY<span class="hljs-punctuation">=&lt;</span>PATH_TO_COMICS_DIRECTORY<span class="hljs-punctuation">&gt;</span>
+USERDATA_DIRECTORY<span class="hljs-punctuation">=/</span>mnt<span class="hljs-punctuation">/</span>user<span class="hljs-punctuation">/</span>appdata<span class="hljs-punctuation">/</span>threetwo<span class="hljs-punctuation">/</span>userdata
+
+COMICVINE_API_KEY<span class="hljs-punctuation">=&lt;</span>YOUR_COMICVINE_API_KEY<span class="hljs-punctuation">&gt;</span>
+
+LOGGER<span class="hljs-punctuation">=</span><span class="hljs-keyword">true</span>
+LOGLEVEL<span class="hljs-punctuation">=</span>info
+SERVICEDIR<span class="hljs-punctuation">=</span>dist<span class="hljs-punctuation">/</span>services
+
+CHOKIDAR_USEPOLLING<span class="hljs-punctuation">=</span><span class="hljs-keyword">true</span>
+
+UNRAR_BIN_PATH<span class="hljs-punctuation">=/</span>usr<span class="hljs-punctuation">/</span>bin<span class="hljs-punctuation">/</span>unrar
+SEVENZ_BINARY_PATH<span class="hljs-punctuation">=/</span>usr<span class="hljs-punctuation">/</span>bin<span class="hljs-punctuation">/</span>7za
+MONGO_URI<span class="hljs-punctuation">=</span>mongodb<span class="hljs-punctuation">://</span>db<span class="hljs-punctuation">:</span><span class="hljs-number">27017</span><span class="hljs-punctuation">/</span>threetwo
+ELASTICSEARCH_URI<span class="hljs-punctuation">=</span>http<span class="hljs-punctuation">://</span>elasticsearch<span class="hljs-punctuation">:</span><span class="hljs-number">9200</span>
+REDIS_URI<span class="hljs-punctuation">=</span>redis<span class="hljs-punctuation">://</span>redis<span class="hljs-punctuation">:</span><span class="hljs-number">6379</span>
+TRANSPORTER<span class="hljs-punctuation">=</span>redis<span class="hljs-punctuation">://</span>redis<span class="hljs-punctuation">:</span><span class="hljs-number">6379</span>
+CACHER<span class="hljs-punctuation">=</span>Memory
+</code></pre>
+</li>
+</ol>
+<h3 id="installation" class="docmd-heading"><a href="#installation" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Installation</h3>
+<ol>
+<li>Install the <code>docker-compose manager</code> plugin from the unRAID CA store. After installation, you can find the plugin UI under the <code>Docker</code> tab.</li>
+<li>Create a new stack, give it a name.</li>
+<li>Hover over the gear next to it and click on <code>Edit Stack</code>.</li>
+<li>Copy-paste this into the textarea:</li>
+</ol>
+<pre class="hljs"><code class="language-yaml">version<span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;3.7&quot;</span>
+
+x<span class="hljs-punctuation">-</span>userdata<span class="hljs-punctuation">-</span>volume<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&amp;</span>userdata<span class="hljs-punctuation">-</span>volume
+  <span class="hljs-keyword">type</span><span class="hljs-punctuation">:</span> bind
+  <span class="hljs-keyword">source</span><span class="hljs-punctuation">:</span> <span class="hljs-variable">${USERDATA_DIRECTORY}</span>
+  target<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">/</span>userdata
+
+x<span class="hljs-punctuation">-</span>comics<span class="hljs-punctuation">-</span>volume<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&amp;</span>comics<span class="hljs-punctuation">-</span>volume
+  <span class="hljs-keyword">type</span><span class="hljs-punctuation">:</span> bind
+  <span class="hljs-keyword">source</span><span class="hljs-punctuation">:</span> <span class="hljs-variable">${COMICS_DIRECTORY}</span>
+  target<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">/</span>comics
+
+services<span class="hljs-punctuation">:</span>
+threetwo<span class="hljs-punctuation">:</span>
+   build<span class="hljs-punctuation">:</span>
+      context<span class="hljs-punctuation">:</span> https<span class="hljs-punctuation">://</span>github.<span class="hljs-attr">com</span><span class="hljs-punctuation">/</span>rishighan<span class="hljs-punctuation">/</span>threetwo.<span class="hljs-keyword">git</span>
+      dockerfile<span class="hljs-punctuation">:</span> Dockerfile
+   image<span class="hljs-punctuation">:</span> frishi<span class="hljs-punctuation">/</span>threetwo
+   container_name<span class="hljs-punctuation">:</span> threetwo<span class="hljs-punctuation">-</span>ui
+   env_file<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">/</span>boot<span class="hljs-punctuation">/</span>config<span class="hljs-punctuation">/</span>plugins<span class="hljs-punctuation">/</span>compose.<span class="hljs-attr">manager</span><span class="hljs-punctuation">/</span>projects<span class="hljs-punctuation">/</span>ThreeTwo<span class="hljs-punctuation">/</span>.<span class="hljs-attr">env</span>
+   restart<span class="hljs-punctuation">:</span> unless<span class="hljs-punctuation">-</span>stopped
+   ports<span class="hljs-punctuation">:</span>
+      <span class="hljs-punctuation">-</span> <span class="hljs-string">&quot;8050:8050&quot;</span>
+      <span class="hljs-punctuation">-</span> <span class="hljs-string">&quot;3050:3050&quot;</span>
+   links<span class="hljs-punctuation">:</span>
+      <span class="hljs-punctuation">-</span> core<span class="hljs-punctuation">-</span>services
+   depends_on<span class="hljs-punctuation">:</span>
+      <span class="hljs-punctuation">-</span> db
+      <span class="hljs-punctuation">-</span> elasticsearch
+      <span class="hljs-punctuation">-</span> redis
+   networks<span class="hljs-punctuation">:</span>
+      <span class="hljs-punctuation">-</span> proxy
+
+metadata<span class="hljs-punctuation">-</span>service<span class="hljs-punctuation">:</span>
+   build<span class="hljs-punctuation">:</span>
+      context<span class="hljs-punctuation">:</span> https<span class="hljs-punctuation">://</span>github.<span class="hljs-attr">com</span><span class="hljs-punctuation">/</span>rishighan<span class="hljs-punctuation">/</span>threetwo<span class="hljs-punctuation">-</span>metadata<span class="hljs-punctuation">-</span>service.<span class="hljs-keyword">git</span>
+   image<span class="hljs-punctuation">:</span> frishi<span class="hljs-punctuation">/</span>threetwo<span class="hljs-punctuation">-</span>metadata<span class="hljs-punctuation">-</span>service
+   container_name<span class="hljs-punctuation">:</span> metadata<span class="hljs-punctuation">-</span>service
+   ports<span class="hljs-punctuation">:</span>
+      <span class="hljs-punctuation">-</span> <span class="hljs-string">&quot;3080:3080&quot;</span>
+   environment<span class="hljs-punctuation">:</span>
+      SERVICES<span class="hljs-punctuation">:</span> api,comicvine
+   env_file<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">/</span>boot<span class="hljs-punctuation">/</span>config<span class="hljs-punctuation">/</span>plugins<span class="hljs-punctuation">/</span>compose.<span class="hljs-attr">manager</span><span class="hljs-punctuation">/</span>projects<span class="hljs-punctuation">/</span>ThreeTwo<span class="hljs-punctuation">/</span>.<span class="hljs-attr">env</span>
+   depends_on<span class="hljs-punctuation">:</span>
+      <span class="hljs-punctuation">-</span> redis
+   volumes<span class="hljs-punctuation">:</span>
+      <span class="hljs-punctuation">-</span> <span class="hljs-punctuation">*</span>comics<span class="hljs-punctuation">-</span>volume
+      <span class="hljs-punctuation">-</span> <span class="hljs-punctuation">*</span>userdata<span class="hljs-punctuation">-</span>volume
+   networks<span class="hljs-punctuation">:</span>
+      <span class="hljs-punctuation">-</span> proxy
+
+core<span class="hljs-punctuation">-</span>services<span class="hljs-punctuation">:</span>
+   build<span class="hljs-punctuation">:</span>
+      context<span class="hljs-punctuation">:</span> https<span class="hljs-punctuation">://</span>github.<span class="hljs-attr">com</span><span class="hljs-punctuation">/</span>rishighan<span class="hljs-punctuation">/</span>threetwo<span class="hljs-punctuation">-</span>core<span class="hljs-punctuation">-</span>service.<span class="hljs-keyword">git</span>
+   image<span class="hljs-punctuation">:</span> frishi<span class="hljs-punctuation">/</span>threetwo<span class="hljs-punctuation">-</span>core<span class="hljs-punctuation">-</span>service
+   container_name<span class="hljs-punctuation">:</span> core<span class="hljs-punctuation">-</span>services
+   ports<span class="hljs-punctuation">:</span>
+      <span class="hljs-punctuation">-</span> <span class="hljs-string">&quot;3000:3000&quot;</span>
+      <span class="hljs-punctuation">-</span> <span class="hljs-string">&quot;3001:3001&quot;</span>
+   depends_on<span class="hljs-punctuation">:</span>
+      <span class="hljs-punctuation">-</span> db
+      <span class="hljs-punctuation">-</span> redis
+      <span class="hljs-punctuation">-</span> elasticsearch
+   environment<span class="hljs-punctuation">:</span>
+      name<span class="hljs-punctuation">:</span> core<span class="hljs-punctuation">-</span>services
+      SERVICES<span class="hljs-punctuation">:</span> api,library,importqueue,settings,search,socket,imagetransformation,opds
+   env_file<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">/</span>boot<span class="hljs-punctuation">/</span>config<span class="hljs-punctuation">/</span>plugins<span class="hljs-punctuation">/</span>compose.<span class="hljs-attr">manager</span><span class="hljs-punctuation">/</span>projects<span class="hljs-punctuation">/</span>ThreeTwo<span class="hljs-punctuation">/</span>.<span class="hljs-attr">env</span>
+   volumes<span class="hljs-punctuation">:</span>
+      <span class="hljs-punctuation">-</span> <span class="hljs-punctuation">*</span>comics<span class="hljs-punctuation">-</span>volume
+      <span class="hljs-punctuation">-</span> <span class="hljs-punctuation">*</span>userdata<span class="hljs-punctuation">-</span>volume
+
+   networks<span class="hljs-punctuation">:</span>
+      <span class="hljs-punctuation">-</span> proxy
+
+db<span class="hljs-punctuation">:</span>
+   image<span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;bitnami/mongodb:latest&quot;</span>
+   container_name<span class="hljs-punctuation">:</span> database
+   networks<span class="hljs-punctuation">:</span>
+      <span class="hljs-punctuation">-</span> proxy
+   ports<span class="hljs-punctuation">:</span>
+      <span class="hljs-punctuation">-</span> <span class="hljs-string">&quot;27017:27017&quot;</span>
+   volumes<span class="hljs-punctuation">:</span>
+      <span class="hljs-punctuation">-</span> <span class="hljs-string">&quot;mongodb_data:/bitnami/mongodb&quot;</span>
+
+redis<span class="hljs-punctuation">:</span>
+   image<span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;bitnami/redis:latest&quot;</span>
+   container_name<span class="hljs-punctuation">:</span> queue
+   environment<span class="hljs-punctuation">:</span>
+      ALLOW_EMPTY_PASSWORD<span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;yes&quot;</span>
+   networks<span class="hljs-punctuation">:</span>
+      <span class="hljs-punctuation">-</span> proxy
+   ports<span class="hljs-punctuation">:</span>
+      <span class="hljs-punctuation">-</span> <span class="hljs-string">&quot;6379:6379&quot;</span>
+
+elasticsearch<span class="hljs-punctuation">:</span>
+   image<span class="hljs-punctuation">:</span> <span class="hljs-keyword">docker</span>.<span class="hljs-attr">elastic</span>.<span class="hljs-attr">co</span><span class="hljs-punctuation">/</span>elasticsearch<span class="hljs-punctuation">/</span>elasticsearch<span class="hljs-punctuation">:</span><span class="hljs-number">7.16</span>.<span class="hljs-number">2</span>
+   container_name<span class="hljs-punctuation">:</span> elasticsearch
+   environment<span class="hljs-punctuation">:</span>
+      <span class="hljs-punctuation">-</span> <span class="hljs-string">&quot;discovery.type=single-node&quot;</span>
+      <span class="hljs-punctuation">-</span> <span class="hljs-string">&quot;ES_JAVA_OPTS=-Xms512m -Xmx512m&quot;</span>
+      <span class="hljs-punctuation">-</span> <span class="hljs-string">&quot;xpack.security.enabled=true&quot;</span>
+      <span class="hljs-punctuation">-</span> <span class="hljs-string">&quot;xpack.security.authc.api_key.enabled=true&quot;</span>
+      <span class="hljs-punctuation">-</span> <span class="hljs-string">&quot;ELASTIC_PASSWORD=password&quot;</span>
+   ulimits<span class="hljs-punctuation">:</span>
+      memlock<span class="hljs-punctuation">:</span>
+      soft<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">-</span><span class="hljs-number">1</span>
+      hard<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">-</span><span class="hljs-number">1</span>
+   ports<span class="hljs-punctuation">:</span>
+      <span class="hljs-punctuation">-</span> <span class="hljs-number">9200</span><span class="hljs-punctuation">:</span><span class="hljs-number">9200</span>
+   networks<span class="hljs-punctuation">:</span>
+      <span class="hljs-punctuation">-</span> proxy
+
+networks<span class="hljs-punctuation">:</span>
+proxy<span class="hljs-punctuation">:</span>
+   external<span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span>
+
+volumes<span class="hljs-punctuation">:</span>
+mongodb_data<span class="hljs-punctuation">:</span>
+   driver<span class="hljs-punctuation">:</span> local
+elastic<span class="hljs-punctuation">:</span>
+  driver<span class="hljs-punctuation">:</span> local
+</code></pre>
+<ol start="5">
+<li>Click <code>Save Changes</code></li>
+<li>Click <code>Compose Up</code> and check for errors.</li>
+<li>If all goes well, you should see the following containers appear as icons without images in the unRAID <code>Docker Containers</code> panel:
+<ol>
+<li><code>threetwo-ui</code></li>
+<li><code>core-services</code></li>
+<li><code>metadata-service</code></li>
+<li><code>elasticsearch</code></li>
+<li><code>database</code></li>
+<li><code>queue</code></li>
+</ol>
+</li>
+<li>You can look at the logs for these containers by clicking on their icons and then <code>Logs</code></li>
+</ol>
+<h3 id="ports" class="docmd-heading"><a href="#ports" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Ports</h3>
+<ol>
+<li><code>threetwo-ui</code>, runs on port 8050</li>
+<li><code>threetwo-core-service</code> on 3000</li>
+<li><code>threetwo-metadata-service</code> on 3080</li>
+</ol>
+<h3 id="getting-updates" class="docmd-heading"><a href="#getting-updates" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Getting Updates</h3>
+<p>Go to the <code>Docker Containers</code> tab from the unRAID web UI:</p>
+<ol>
+<li>Click on <code>Compose Down</code>, and let the command finish running.</li>
+<li>Click on <code>Compose Pull</code>, and let it finish running.</li>
+<li>Click on <code>Compose Up</code> to bring up the stack.</li>
+</ol>
+
+                
+                  <div class="page-navigation">
+                    
+                      <a href="../../v0.0.1-beta/unraid_install/" class="prev-page">
+                        
+<svg class="lucide-icon icon-arrow-left page-nav-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-arrow-left"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m12 19-7-7 7-7" />
+  <path d="M19 12H5" />
+</svg>
+
+                        <span><small>Previous</small><strong>
+                            Install on unRaid
+                          </strong></span>
+                      </a>
+                    
+                    
+                      <a href="../../v0.0.1-beta/architecture/" class="next-page">
+                        <span><small>Next</small>
+                          <strong>
+                            Technical Architecture
+                          </strong></span>
+                        
+<svg class="lucide-icon icon-arrow-right page-nav-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-arrow-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" />
+</svg>
+
+                      </a>
+                    
+                  </div>
+                
+              </div>
+              <div class="toc-sidebar">
+                
+
+
+  <div class="toc-container">
+    <h2 class="toc-title">On This Page<span class="mobile-view toc-menu-button float-right">
+<svg class="lucide-icon icon-chevron-down " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-down"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg>
+</span></h2>
+    <ul class="toc-list">
+      
+        <li class="toc-item toc-level-3">
+          <a href="#notes" class="toc-link">Notes</a>
+        </li>
+      
+        <li class="toc-item toc-level-3">
+          <a href="#pre-requisites" class="toc-link">Pre-requisites</a>
+        </li>
+      
+        <li class="toc-item toc-level-3">
+          <a href="#installation" class="toc-link">Installation</a>
+        </li>
+      
+        <li class="toc-item toc-level-3">
+          <a href="#ports" class="toc-link">Ports</a>
+        </li>
+      
+        <li class="toc-item toc-level-3">
+          <a href="#getting-updates" class="toc-link">Getting Updates</a>
+        </li>
+      
+    </ul>
+  </div>
+
+              </div>
+            </div>
+            <div class="page-footer-actions">
+              
+              
+              <span class="git-spacer"></span>
+              
+            </div>
+          </main>
+          
+
+
+<footer class="page-footer">
+  <div class="footer-content">
+    <div class="user-footer">© 2026</div>
+    
+      <div class="branding-footer">
+        Built with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"></path><path d="m18 15-2-2"></path><path d="m15 18-2-2"></path></svg> <a href="https://docmd.io" target="_blank" rel="noopener">docmd.</a>
+      </div>
+    
+  </div>
+</footer>
+
+        </div>
+      </div>
+      
+      <script src="../../assets/js/docmd-main.js?v=mrdu8j8g"></script>
+      
+      <script src="../../assets/js/docmd-git.js?v=mrdu8j8g"></script>
+      <script src="../../assets/js/docmd-image-lightbox.js?v=mrdu8j8g" ></script>
+<script src="https://cdn.jsdelivr.net/npm/minisearch@7.2.0/dist/umd/index.min.js" ></script>
+<script src="../../assets/js/docmd-search.js?v=mrdu8j8g" ></script>
+<script src="../../assets/js/docmd-git.js?v=mrdu8j8g" type="module"></script>
+
+  <!-- Search Modal (Injected by @docmd/plugin-search) -->
+  <div id="docmd-search-modal" class="docmd-search-modal" style="display: none;" data-show-confidence="false" data-show-filters="true"
+       data-search-placeholder="Search documentation..."
+       data-search-no-results="No results found."
+       data-search-error="Failed to load search index."
+       data-search-initial="Type to start searching..."
+       data-search-navigate="to navigate"
+       data-search-escape="to close">
+      <div class="docmd-search-box">
+          <div class="docmd-search-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon icon-search"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+              <input type="text" id="docmd-search-input" placeholder="Search documentation..." autocomplete="off" spellcheck="false">
+              <button onclick="window.closeDocmdSearch()" class="docmd-search-close" aria-label="Close search">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon icon-x"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+              </button>
+          </div>
+          <div id="docmd-search-results" class="docmd-search-results"></div>
+          <div class="docmd-search-footer">
+              <span><kbd class="docmd-kbd">↑</kbd> <kbd class="docmd-kbd">↓</kbd> to navigate</span>
+              <span><kbd class="docmd-kbd">ESC</kbd> to close</span>
+          </div>
+      </div>
+  </div>
+
+    <script>
+      (function() {
+        var searchDebounceTimer;
+
+        document.addEventListener('click', function(e) {
+          var link = e.target.closest('a');
+          if (!link || !window.gtag) return;
+          
+          var url = link.href;
+          var hostname = window.location.hostname;
+          var isExternal = link.hostname && link.hostname !== hostname;
+          var isDownload = link.hasAttribute('download') || url.match(/\.(pdf|zip|tar|gz|exe|pkg)$/i);
+          
+          if (isExternal) {
+            gtag('event', 'click_external', { 'url': url, 'link_text': link.innerText.trim() });
+          } else if (isDownload) {
+            gtag('event', 'download', { 'file_name': url.split('/').pop(), 'url': url });
+          }
+
+          // TOC tracking
+          if (link.classList.contains('toc-link')) {
+            gtag('event', 'toc_click', { 'target_id': link.getAttribute('href'), 'title': link.innerText.trim() });
+          }
+
+          // Permalink tracking
+          if (link.classList.contains('heading-anchor')) {
+            gtag('event', 'permalink_click', { 'url': url });
+          }
+        });
+
+        
+        // Search Keyword Tracking
+        document.addEventListener('input', function(e) {
+          if (e.target.id === 'docmd-search-input' && window.gtag) {
+            var query = e.target.value.trim();
+            if (query.length < 3) return;
+            
+            clearTimeout(searchDebounceTimer);
+            searchDebounceTimer = setTimeout(function() {
+              gtag('event', 'search', { 'search_term': query });
+            }, 1000);
+          }
+        });
+        
+      })();
+    </script>
+
+<script>window.__git_config={"repo":null,"branch":"main","editLink":false,"lastUpdated":true,"commitHistory":true,"maxCommits":5,"dateFormat":"relative"};window.__git_i18n={"lastUpdated":"Last updated","recentCommits":"Recent commits","viewCommitHistory":"View commit history","editOnGitHub":"Edit on GitHub","editOnGitLab":"Edit on GitLab","editOnBitbucket":"Edit on Bitbucket","editThisPage":"Edit this page","justNow":"just now","minutesAgo":"{n}m ago","hoursAgo":"{n}h ago","daysAgo":"{n}d ago"}</script>
+      
+      
+      
+  </body>
+</html>

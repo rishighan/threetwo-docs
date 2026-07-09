@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sidebar Content Verification</title>
+<style>
+  body { font-family: monospace; }
+  .item { padding: 10px; background: #f0f0f0; margin: 5px 0; }
+</style>
+</head>
+<body>
+<h1>Sidebar Navigation Items Found in HTML</h1>
+<div id="items"></div>
+<script>
+// Extract from the raw HTML we saw earlier
+const items = [
+  "Documentation (parent group)",
+  "  • Introduction", 
+  "  • Install on unRaid",
+  "  • Docker Compose",
+  "  • Technical Architecture",
+  "  • Resources & Help",
+  "GitHub (external link)"
+];
+
+const div = document.getElementById('items');
+items.forEach(item => {
+  const el = document.createElement('div');
+  el.className = 'item';
+  el.textContent = item;
+  div.appendChild(el);
+});
+</script>
+</body>
+</html>
