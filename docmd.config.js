@@ -25,7 +25,7 @@ export default {
     colorScheme: "auto",
   },
 
-  // Navigation (defined at global level - used for non-versioned builds)
+  // Navigation
   navigation: [
     {
       title: "Documentation",
@@ -36,6 +36,13 @@ export default {
         { "title": "Docker Compose", "path": "/unraid_dockercompose", "icon": "package" },
         { "title": "Technical Architecture", "path": "/architecture", "icon": "layers" },
         { "title": "Resources & Help", "path": "/resources", "icon": "help-circle" }
+      ]
+    },
+    {
+      title: "Versions & Compatibility",
+      children: [
+        { "title": "Component Versions", "path": "/component-versions", "icon": "package-open" },
+        { "title": "Compatibility Matrix", "path": "/COMPATIBILITY", "icon": "gitcompare" }
       ]
     },
     {
