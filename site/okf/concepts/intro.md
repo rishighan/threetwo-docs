@@ -4,10 +4,10 @@ title: Introduction
 source: /intro/
 path: /intro/
 version: latest
-updated: 2026-07-09
+updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-09T20:05:02.578Z"
+  generated_at: "2026-07-10T16:44:12.845Z"
 ---
 ---
 sidebar_position: 1
@@ -30,23 +30,21 @@ software used to manage comic book collections.
 ## Philosophy
 
 Whether you collect comics because you are a hoarder, or you suffer from the
-vagaries of corporate greed, curation is a solace. A safe space, meant for
+vagaries of corporate greed, curation is solace. A safe space, meant for
 collecting the artifacts that hold a special place in your heart. ThreeTwo
 aspires to be the means to that end, nothing more.
 
 ### Discovery
 
-The first tenet of `ThreeTwo!` is discovery–the act of importing comics from
-your OS, finding new comic to read or just searching through your collection
-for a comic that sparks nostalgia. Discovery is important, both from a
-technical perspective, so that `ThreeTwo!` can infer metadata from your
-collection, as well as from a curatorial standpoint, you want to keep track of
-what you are reading, or what you want to be reading.
+ThreeTwo encourages discovery by letting your comic collection take center stage.
+Discovery is important, both from a technical perspective, so that `ThreeTwo!` can infer 
+metadata from your collection, as well as from a curatorial standpoint. Enjoy reading your 
+comics in-app, or just gawk at the beautiful cover art.
 
 ### Curation
 
-`ThreeTwo!` takes curation seriously, and thusly offers ComicVine scraping, and
-other means of applying/extending the comic metadata. This is so that your
+`ThreeTwo!` takes curation seriously, and thusly offers ComicVine scraping,
+among other sources and helps enrich the comic metadata. This is so that your
 collection can truly shine, and actually help in discovering or rediscovering
 comics.
 
@@ -55,6 +53,8 @@ comics.
 Once you have added to your list of _wanted_ comics, you can rely on
 `ThreeTwo!`'s first-class support for `DC++` via `AirDC++` to acquire them.
 Just configure your `AirDC++` host, hub information and you are golden.
+
+_Of course, ThreeTwo does not and will never condone piracy or copyright infringement._
 
 ### Consumption
 

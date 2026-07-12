@@ -5,7 +5,7 @@ bundle:
   description: ""
   url: ""
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-09T20:05:02.582Z"
+  generated_at: "2026-07-10T16:44:12.847Z"
   default_type: concept
 stats:
   concepts: 18
@@ -59,7 +59,7 @@ concepts:
     tags: 
   - id: unraid-install
     type: concept
-    title: "Install ThreeTwo! on unRaid"
+    title: "Install ThreeTwo"
     path: /unraid_install/
     file: concepts/unraid-install.md
     locale: ""

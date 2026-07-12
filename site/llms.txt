@@ -9,7 +9,7 @@
 - [Introduction](/intro/)
 - [Resources & Help](/resources/)
 - [Install ThreeTwo! on unRAID with docker-compose](/unraid_dockercompose/)
-- [Install ThreeTwo! on unRaid](/unraid_install/)
+- [Install ThreeTwo](/unraid_install/)
 - [Technical Architecture](/v0.0.1-beta/architecture/)
 - [Component Versions - v0.0.1-beta](/v0.0.1-beta/component-versions/)
 - [Introduction](/v0.0.1-beta/intro/)

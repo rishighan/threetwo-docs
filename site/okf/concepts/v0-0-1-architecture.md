@@ -4,10 +4,10 @@ title: "Technical Architecture"
 source: /v0.0.1/architecture/
 path: /v0.0.1/architecture/
 version: v0.0.1
-updated: 2026-07-09
+updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-09T20:05:02.580Z"
+  generated_at: "2026-07-10T16:44:12.846Z"
 ---
 ---
 sidebar_position: 4
