@@ -5,12 +5,12 @@ bundle:
   description: ""
   url: ""
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-10T16:44:12.847Z"
+  generated_at: "2026-07-12T16:22:14.069Z"
   default_type: concept
 stats:
-  concepts: 18
+  concepts: 19
   by_type:
-    concept: 18
+    concept: 19
   locales: 
   versions:
     - latest
@@ -38,6 +38,14 @@ concepts:
     title: Introduction
     path: /intro/
     file: concepts/intro.md
+    locale: ""
+    version: latest
+    tags: 
+  - id: local-development
+    type: concept
+    title: "Local Development"
+    path: /local-development/
+    file: concepts/local-development.md
     locale: ""
     version: latest
     tags: 

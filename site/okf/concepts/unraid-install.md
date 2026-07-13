@@ -4,10 +4,10 @@ title: "Install ThreeTwo"
 source: /unraid_install/
 path: /unraid_install/
 version: latest
-updated: 2026-07-10
+updated: 2026-07-12
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-10T16:44:12.845Z"
+  generated_at: "2026-07-12T16:22:14.066Z"
 ---
 ---
 sidebar_position: 2
@@ -17,14 +17,18 @@ title: Install ThreeTwo
 
 ### Notes
 
-This is the currently recommended method of installation. Docker is going to offer you the most 
-flexibility in terms of setting storage volumes and reducing setup time.
+This is the currently recommended method of installation. Container-based installation is going to offer 
+you the most flexibility in terms of setting storage volumes and reducing setup time.
 
 ### Pre-requisites
 
-This guide assumes that you are running a Linux distro that has:
+This guide assumes the following:
 
+- You are running an OS that supports:
 - `docker` and `docker compose` or
 - `podman` and `podman compose`
 
-### What gets installed
+### Installation details
+
+You will be installing the `threetwo-ui` along with its dependencies, the microservices 
+that constitute all of its major functions.

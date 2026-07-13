@@ -21,6 +21,12 @@
       "priority": "medium"
     },
     {
+      "title": "Local Development",
+      "url": "/local-development/",
+      "description": "",
+      "priority": "medium"
+    },
+    {
       "title": "Resources & Help",
       "url": "/resources/",
       "description": "",

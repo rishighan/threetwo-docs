@@ -85,7 +85,7 @@
     </style>
     
     <script>
-      var root = "../../";
+      var root = "../";
       if (root && !root.endsWith('/')) root += '/';
       if (root === '') root = './';
       window.DOCMD_ROOT = root;
@@ -93,37 +93,37 @@
       window.DOCMD_SITE_ROOT = "/";
 
       window.DOCMD_APPEARANCE = "system";
-      window.DOCMD_VERSION_ROOT = "/v0.0.1/";
+      window.DOCMD_VERSION_ROOT = "/";
       window.DOCMD_BASE = "/";
       window.DOCMD_LOCALE = "";
       window.DOCMD_DEFAULT_LOCALE = "";
     </script>
     <title>
-      Install ThreeTwo! on unRaid : ThreeTwo!
+      Local Development : ThreeTwo!
     </title>
 
     <base href="/">
     
-    <link rel="stylesheet" href="../../assets/css/docmd-main.css?v=mri04hn9">
+    <link rel="stylesheet" href="../assets/css/docmd-main.css?v=mri04hn9">
     
-    <link rel="stylesheet" href="../../assets/css/docmd-highlight-light.css?v=mri04hn9" id="hljs-light" >
-    <link rel="stylesheet" href="../../assets/css/docmd-highlight-dark.css?v=mri04hn9" id="hljs-dark" disabled>
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-light.css?v=mri04hn9" id="hljs-light" >
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-dark.css?v=mri04hn9" id="hljs-dark" disabled>
     
     
 <meta name="description" content="">
-<link rel="canonical" href="/v0.0.1/unraid_install/">
-<meta property="og:title" content="Install ThreeTwo! on unRaid - ThreeTwo!">
+<link rel="canonical" href="/local-development/">
+<meta property="og:title" content="Local Development - ThreeTwo!">
 <meta property="og:description" content="">
-<meta property="og:url" content="/v0.0.1/unraid_install/">
+<meta property="og:url" content="/local-development/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Install ThreeTwo! on unRaid - ThreeTwo!">
+<meta name="twitter:title" content="Local Development - ThreeTwo!">
 <meta name="twitter:description" content="">
 
 
 
-<link rel="stylesheet" href="../../assets/css/docmd-git.css?v=mri04hn9" >
-<link rel="stylesheet" href="../../assets/css/docmd-openapi.css?v=mri04hn9" >
+<link rel="stylesheet" href="../assets/css/docmd-git.css?v=mri04hn9" >
+<link rel="stylesheet" href="../assets/css/docmd-openapi.css?v=mri04hn9" >
 
     
     <script>/**
@@ -196,7 +196,7 @@
   <body
     class="sidebar-collapsible"
     data-default-collapsed="false"
-    data-copy-code-enabled="true" data-spa-enabled="true" data-source-file="docs-v0.0.1/unraid_install.md">
+    data-copy-code-enabled="true" data-spa-enabled="true" data-source-file="docs/local-development.md">
 
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -205,7 +205,7 @@
       <aside class="sidebar">
         <div class="sidebar-header">
           
-            <h1><a href="../../">
+            <h1><a href="../">
                 ThreeTwo!
               </a></h1>
           
@@ -259,7 +259,7 @@
 </svg>
 
     <span class="version-label">
-      v0.0.1
+      Latest (Development)
     </span>
     
 <svg class="lucide-icon icon-chevron-down version-chevron" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -282,30 +282,10 @@
     
     <li>
       <a href="/" 
-         class="version-dropdown-item " 
+         class="version-dropdown-item active" 
          data-spa-ignore
          data-version-root="/">
         Latest (Development) <span class="version-latest-badge">Latest</span>
-        
-      </a>
-    </li>
-    
-    <li>
-      <a href="/v0.0.1-beta/" 
-         class="version-dropdown-item " 
-         data-spa-ignore
-         data-version-root="/v0.0.1-beta/">
-        v0.0.1-beta
-        
-      </a>
-    </li>
-    
-    <li>
-      <a href="/v0.0.1/" 
-         class="version-dropdown-item active" 
-         data-spa-ignore
-         data-version-root="/v0.0.1/">
-        v0.0.1
         
           
 <svg class="lucide-icon icon-check version-check" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -327,6 +307,26 @@
       </a>
     </li>
     
+    <li>
+      <a href="/v0.0.1-beta/" 
+         class="version-dropdown-item " 
+         data-spa-ignore
+         data-version-root="/v0.0.1-beta/">
+        v0.0.1-beta
+        
+      </a>
+    </li>
+    
+    <li>
+      <a href="/v0.0.1/" 
+         class="version-dropdown-item " 
+         data-spa-ignore
+         data-version-root="/v0.0.1/">
+        v0.0.1
+        
+      </a>
+    </li>
+    
   </ul>
 </div>
 
@@ -339,9 +339,9 @@
 <nav class="sidebar-nav" aria-label="Main Navigation">
   <ul>
     
-      <li class="active-parent collapsible expanded nav-group"  aria-expanded="true" >
+      <li class="collapsible nav-group"  aria-expanded="false" >
       
-        <a href="../../v0.0.1/intro/" class=" nav-group"
+        <a href="../intro/" class=" nav-group"
           >
           
           <span class="nav-item-title">
@@ -374,7 +374,7 @@
             
       <li class="" >
       
-        <a href="../../v0.0.1/intro/" class=" "
+        <a href="../intro/" class=" "
           >
            
 <svg class="lucide-icon icon-book " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -404,9 +404,9 @@
         
       </li>
     
-      <li class="active" >
+      <li class="" >
       
-        <a href="../../v0.0.1/unraid_install/" class="active "
+        <a href="../unraid_install/" class=" "
           >
            
 <svg class="lucide-icon icon-download " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -428,7 +428,7 @@
 
           
           <span class="nav-item-title">
-            Install on unRaid
+            Installation
             </span>
           
           
@@ -440,7 +440,7 @@
     
       <li class="" >
       
-        <a href="../../v0.0.1/unraid_dockercompose/" class=" "
+        <a href="../unraid_dockercompose/" class=" "
           >
            
 <svg class="lucide-icon icon-package " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -475,7 +475,7 @@
     
       <li class="" >
       
-        <a href="../../v0.0.1/architecture/" class=" "
+        <a href="../architecture/" class=" "
           >
            
 <svg class="lucide-icon icon-layers " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -509,7 +509,7 @@
     
       <li class="" >
       
-        <a href="../../v0.0.1/resources/" class=" "
+        <a href="../resources/" class=" "
           >
            
 <svg class="lucide-icon icon-help-circle " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -578,7 +578,7 @@
             
       <li class="" >
       
-        <a href="../../v0.0.1/component-versions/" class=" "
+        <a href="../component-versions/" class=" "
           >
            
 <svg class="lucide-icon icon-package-open " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -602,6 +602,74 @@
           
           <span class="nav-item-title">
             Component Versions
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+          </ul>
+        
+      </li>
+    
+      <li class="active-parent collapsible expanded nav-group"  aria-expanded="true" >
+      
+        <span class="nav-label nav-group">
+          
+          <span class="nav-item-title">
+            For developers
+          </span>
+          
+            <span class="collapse-icon-wrapper">
+<svg class="lucide-icon icon-chevron-right collapse-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</span>
+          
+        </span>
+        
+
+        
+          <ul class="submenu">
+            
+      <li class="active" >
+      
+        <a href="../local-development/" class="active "
+          >
+           
+<svg class="lucide-icon icon-terminal " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-terminal"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 19h8" />
+  <path d="m4 17 6-6-6-6" />
+</svg>
+
+          
+          <span class="nav-item-title">
+            Local Development
             </span>
           
           
@@ -706,7 +774,7 @@
               
               <div class="header-titles-wrapper">
                 <span class="header-title">
-                  Install ThreeTwo! on unRaid
+                  Local Development
                 </span>
               </div>
             </div>
@@ -800,7 +868,7 @@
             <div class="content-layout">
               <div class="main-content">
                 <div class="docmd-breadcrumbs-row">
-                  <div id="docmd-raw-markdown" data-content="---%0Asidebar_position%3A%202%0Aid%3A%20unraid_install%0Atitle%3A%20Install%20ThreeTwo!%20on%20unRaid%0A---%0A%0A%23%23%20Notes%0A%0A-%20Currently%2C%20%60ThreeTwo!%60%20is%20installed%20along%20with%20its%20dependencies%20using%0A%20%20%60docker-compose%60.%20The%20easiest%20way%20to%20install%20it%20on%20%60unRAID%60%20is%20to%20use%20a%20VM.%0A-%20Skip%20the%20VM%20creation%20steps%2C%20if%20you%20already%20have%20a%20Debian%20VM%0A%0A%23%23%20Pre-requisites%0A%0AThis%20guide%20assumes%20the%20following%20is%20installed%20or%20readily%20available%3A%0A%0A-%20%60unRaid%206.9.2%60%20(this%20version%20was%20tested%20against%20%606.9.2%60)%0A-%20%60Debian%2010.x%60%20(Grab%20the%20install%0A%20%20%5B.iso%5D(https%3A%2F%2Fcdimage.debian.org%2Fdebian-cd%2Fcurrent%2Famd64%2Fiso-cd%2Fdebian-11.1.0-amd64-netinst.iso))%0A%0A%23%23%20Getting%20the%20VM%20up%20and%20running%0A%0A1.%20Download%20the%20%60Debian%60%20install%20%60.iso%60%0A2.%20Place%20it%20in%20a%20folder%20accessible%20by%20the%20VM%0A3.%20Go%20to%20the%20%60VM%60%20tab%20in%20your%20%60unRaid%60%20navigation%0A4.%20Click%20%60Add%20VM%60%0A5.%20From%20the%20list%20presented%20to%20you%2C%20click%20%60Debian%60%20under%20%60Linux%60%0A6.%20On%20the%20VM%20configration%20page%2C%20enter%20the%20desired%20options%20for%20memory%2C%20CPU%0A%20%20%20cores%2C%20vdisk%20allocation%0A7.%20Make%20sure%20that%20you%20have%20set%20the%20volume%20containing%20the%20comics%20correctly%20for%0A%20%20%20%60Unraid%20Share%60%0A8.%20Make%20sure%20that%20you%20have%20also%20set%20the%20%60Unraid%20Mount%20tag%60%20option%0A9.%20Make%20sure%20that%20the%20network%20bridge%20is%20set%20to%20%60br0%60%0A10.%20Set%20a%20password%20for%20%60VNC%60%20so%20you%20can%20follow%20through%20with%20a%20graphical%20install%0A%20%20%20%20if%20you%20so%20wish%0A%0A%23%23%20Installing%20Debian%20on%20the%20VM%0A%0A1.%20Launch%20the%20VM%20via%20%60VNC%20Remote%60%20option%0A2.%20Follow%20the%20steps%20of%20the%20graphical%20installer%0A3.%20Create%20a%20%60root%60%20user%20and%20a%20normal%20%60user%60%20and%20set%20the%20passwords%20for%20both%0A%0A%23%23%20Docker%20pre-requisites%0A%0A1.%20%5BMake%20sure%20you%20have%5D(https%3A%2F%2Funix.stackexchange.com%2Fquestions%2F354928%2Fbash-sudo-command-not-found)%0A%20%20%20%60sudo%60%0A2.%20Make%20sure%20you%20have%20%60ssh%60%20access%20for%20the%20user%20you%20created%20earlier%0A3.%20%60ssh%60%20into%20the%20VM%20as%20the%20non-root%20user%0A4.%20Install%20%5BDocker%20Engine%5D(https%3A%2F%2Fdocs.docker.com%2Fengine%2Finstall%2Fdebian%2F)%0A5.%20Install%0A%20%20%20%5Bdocker-compose%5D(https%3A%2F%2Fdocs.docker.com%2Fcompose%2Finstall%2F%23install-compose-on-linux-systems)%0A6.%20Verify%20that%20%60docker%60%20and%20%60docker-compose%60%20commands%20work%0A%0A%23%23%20Installation%0A%0A1.%20Clone%20the%20repo%3A%20%60git%20clone%20https%3A%2F%2Fgithub.com%2Frishighan%2Fthreetwo.git%60%0A2.%20Change%20the%20directory%3A%20%60cd%20threetwo%60%0A3.%20Create%20directories%20within%20%60threetwo%60%0A%0A%20%20%20%60%60%60bash%0A%20%20%20mkdir%20comics%20userdata%0A%0A%20%20%20mkdir%20userdata%2Fcovers%20userdata%2Ftemporary%20userdata%2Fexpanded%0A%20%20%20%60%60%60%0A%0A4.%20Create%20an%20external%20docker%20network%20using%20%60sudo%20docker%20network%20create%20proxy%60%0A5.%20Run%20%60sudo%20docker-compose%20up%20--build%20-d%60%0A6.%20Wait%20for%20a%20hot%20minute%0A%0A%23%23%20Post-install%20checks%0A%0A1.%20Once%20the%20%60docker-compose%20up%60%20command%20successfully%20completes%2C%20you%20can%20check%0A%20%20%20the%20spun-up%20containers%20using%20%60docker%20ps%60%0A" style="display: none;"></div>
+                  <div id="docmd-raw-markdown" data-content="---%0Asidebar_position%3A%201%0Aid%3A%20local-development%0Atitle%3A%20Local%20Development%0A---%0A%0A%23%23%20Overview%0A%0A%60ThreeTwo!%60%20is%20built%20as%20a%20set%20of%20microservices%20alongside%20a%20%60node.js%60%2F%60React%60%0AUI.%20To%20develop%20locally%2C%20you&#039;ll%20be%20running%20the%20UI%20and%20the%20relevant%0Amicroservices%20side-by-side%2C%20backed%20by%20%60MongoDB%60%2C%20%60Elasticsearch%60%20and%20%60Redis%60.%0A%0A%23%23%20Repositories%0A%0A-%20%5Bthreetwo%5D(https%3A%2F%2Fgithub.com%2Frishighan%2Fthreetwo)%20-%20the%20main%20UI%20application%0A-%20%5Bthreetwo-metadata-service%5D(https%3A%2F%2Fgithub.com%2Frishighan%2Fthreetwo-metadata-service)%20-%20ComicVine%20and%20other%20metadata%20scraping%0A-%20%5Bthreetwo-core-service%5D(https%3A%2F%2Fgithub.com%2Frishighan%2Fthreetwo-core-service)%20-%20GCD%2C%20MAL%20and%20other%20core%20functions%0A-%20%5Bthreetwo-acquisition-service%5D(https%3A%2F%2Fgithub.com%2Frishighan%2Fthreetwo-acquisition-service)%20-%20%60AirDC%2B%2B%60-backed%20acquisition%0A%0A%23%23%20Pre-requisites%0A%0A-%20%60node.js%60%20(see%20the%20%60engines%60%20field%20of%20each%20repo&#039;s%20%60package.json%60%20for%20the%0A%20%20supported%20version)%0A-%20%60docker%60%20and%20%60docker%20compose%60%20(or%20%60podman%60)%20for%20spinning%20up%20backing%20services%0A%20%20like%20%60MongoDB%60%2C%20%60Elasticsearch%60%20and%20%60Redis%60%0A-%20A%20%60ComicVine%60%20API%20key%20for%20metadata%20scraping%20to%20work%20locally%0A%0A%23%23%20Setting%20up%20backing%20services%0A%0AThe%20easiest%20way%20to%20get%20%60MongoDB%60%2C%20%60Elasticsearch%60%20and%20%60Redis%60%20running%20locally%0Ais%20via%20%60docker%20compose%60.%20See%20the%0A%5BDocker%20Compose%20guide%5D(%2Funraid_dockercompose)%20for%20a%20reference%20stack%20you%20can%0Aadapt%20for%20local%20use%2C%20minus%20the%20%60threetwo%60%20and%20microservice%20containers%0Athemselves%2C%20since%20you&#039;ll%20be%20running%20those%20directly%20from%20source.%0A%0A%23%23%20Running%20the%20app%0A%0A1.%20Clone%20the%20repositories%20you%20need%20above.%0A2.%20Install%20dependencies%20in%20each%20with%20%60npm%20install%60.%0A3.%20Copy%20%60.env.example%60%20(or%20create%20a%20%60.env%60)%20in%20each%20service%2C%20pointing%20at%20your%0A%20%20%20local%20%60MongoDB%60%2C%20%60Elasticsearch%60%20and%20%60Redis%60%20instances.%0A4.%20Start%20each%20microservice%20you%20need%20with%20its%20%60dev%60%20script.%0A5.%20Start%20the%20UI%20with%20its%20%60dev%60%20script%2C%20which%20will%20proxy%20requests%20to%20the%0A%20%20%20running%20microservices.%0A%0A%23%23%20Contributing%0A%0AOnce%20your%20local%20environment%20is%20up%20and%20running%2C%20feel%20free%20to%20open%20a%20pull%0Arequest%20against%20the%20relevant%20repository.%20If%20you%20run%20into%20issues%20setting%0Athings%20up%2C%20reach%20out%20on%20%5BDiscord%5D(https%3A%2F%2Fdiscord.gg%2FDbpcSNuM)%20or%20open%20an%0Aissue%20on%20the%20repo.%0A" style="display: none;"></div>
                   
                     <nav aria-label="breadcrumb" class="docmd-breadcrumbs">
                       <ol>
@@ -808,7 +876,7 @@
                         
                           <li class="breadcrumb-item " >
                             
-                              <a href="../../v0.0.1/intro/">Documentation</a>
+                              <span>For developers</span>
                             
                             
                               <span class="breadcrumb-separator">
@@ -832,7 +900,7 @@
                         
                           <li class="breadcrumb-item active" aria-current=&quot;page&quot;>
                             
-                              <span>Install on unRaid</span>
+                              <span>Local Development</span>
                             
                             
                           </li>
@@ -889,81 +957,51 @@
                   
                 </div>
                 
-                <h2 id="notes" class="docmd-heading"><a href="#notes" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Notes</h2>
+                <h2 id="overview" class="docmd-heading"><a href="#overview" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Overview</h2>
+<p><code>ThreeTwo!</code> is built as a set of microservices alongside a <code>node.js</code>/<code>React</code><br>
+UI. To develop locally, you’ll be running the UI and the relevant<br>
+microservices side-by-side, backed by <code>MongoDB</code>, <code>Elasticsearch</code> and <code>Redis</code>.</p>
+<h2 id="repositories" class="docmd-heading"><a href="#repositories" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Repositories</h2>
 <ul>
-<li>Currently, <code>ThreeTwo!</code> is installed along with its dependencies using<br>
-<code>docker-compose</code>. The easiest way to install it on <code>unRAID</code> is to use a VM.</li>
-<li>Skip the VM creation steps, if you already have a Debian VM</li>
+<li><a href="https://github.com/rishighan/threetwo">threetwo</a> - the main UI application</li>
+<li><a href="https://github.com/rishighan/threetwo-metadata-service">threetwo-metadata-service</a> - ComicVine and other metadata scraping</li>
+<li><a href="https://github.com/rishighan/threetwo-core-service">threetwo-core-service</a> - GCD, MAL and other core functions</li>
+<li><a href="https://github.com/rishighan/threetwo-acquisition-service">threetwo-acquisition-service</a> - <code>AirDC++</code>-backed acquisition</li>
 </ul>
 <h2 id="pre-requisites" class="docmd-heading"><a href="#pre-requisites" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Pre-requisites</h2>
-<p>This guide assumes the following is installed or readily available:</p>
 <ul>
-<li><code>unRaid 6.9.2</code> (this version was tested against <code>6.9.2</code>)</li>
-<li><code>Debian 10.x</code> (Grab the install<br>
-<a href="https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.1.0-amd64-netinst.iso">.iso</a>)</li>
+<li><code>node.js</code> (see the <code>engines</code> field of each repo’s <code>package.json</code> for the<br>
+supported version)</li>
+<li><code>docker</code> and <code>docker compose</code> (or <code>podman</code>) for spinning up backing services<br>
+like <code>MongoDB</code>, <code>Elasticsearch</code> and <code>Redis</code></li>
+<li>A <code>ComicVine</code> API key for metadata scraping to work locally</li>
 </ul>
-<h2 id="getting-the-vm-up-and-running" class="docmd-heading"><a href="#getting-the-vm-up-and-running" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Getting the VM up and running</h2>
+<h2 id="setting-up-backing-services" class="docmd-heading"><a href="#setting-up-backing-services" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Setting up backing services</h2>
+<p>The easiest way to get <code>MongoDB</code>, <code>Elasticsearch</code> and <code>Redis</code> running locally<br>
+is via <code>docker compose</code>. See the<br>
+<a href="/unraid_dockercompose/">Docker Compose guide</a> for a reference stack you can<br>
+adapt for local use, minus the <code>threetwo</code> and microservice containers<br>
+themselves, since you’ll be running those directly from source.</p>
+<h2 id="running-the-app" class="docmd-heading"><a href="#running-the-app" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Running the app</h2>
 <ol>
-<li>Download the <code>Debian</code> install <code>.iso</code></li>
-<li>Place it in a folder accessible by the VM</li>
-<li>Go to the <code>VM</code> tab in your <code>unRaid</code> navigation</li>
-<li>Click <code>Add VM</code></li>
-<li>From the list presented to you, click <code>Debian</code> under <code>Linux</code></li>
-<li>On the VM configration page, enter the desired options for memory, CPU<br>
-cores, vdisk allocation</li>
-<li>Make sure that you have set the volume containing the comics correctly for<br>
-<code>Unraid Share</code></li>
-<li>Make sure that you have also set the <code>Unraid Mount tag</code> option</li>
-<li>Make sure that the network bridge is set to <code>br0</code></li>
-<li>Set a password for <code>VNC</code> so you can follow through with a graphical install<br>
-if you so wish</li>
+<li>Clone the repositories you need above.</li>
+<li>Install dependencies in each with <code>npm install</code>.</li>
+<li>Copy <code>.env.example</code> (or create a <code>.env</code>) in each service, pointing at your<br>
+local <code>MongoDB</code>, <code>Elasticsearch</code> and <code>Redis</code> instances.</li>
+<li>Start each microservice you need with its <code>dev</code> script.</li>
+<li>Start the UI with its <code>dev</code> script, which will proxy requests to the<br>
+running microservices.</li>
 </ol>
-<h2 id="installing-debian-on-the-vm" class="docmd-heading"><a href="#installing-debian-on-the-vm" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Installing Debian on the VM</h2>
-<ol>
-<li>Launch the VM via <code>VNC Remote</code> option</li>
-<li>Follow the steps of the graphical installer</li>
-<li>Create a <code>root</code> user and a normal <code>user</code> and set the passwords for both</li>
-</ol>
-<h2 id="docker-pre-requisites" class="docmd-heading"><a href="#docker-pre-requisites" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Docker pre-requisites</h2>
-<ol>
-<li><a href="https://unix.stackexchange.com/questions/354928/bash-sudo-command-not-found">Make sure you have</a><br>
-<code>sudo</code></li>
-<li>Make sure you have <code>ssh</code> access for the user you created earlier</li>
-<li><code>ssh</code> into the VM as the non-root user</li>
-<li>Install <a href="https://docs.docker.com/engine/install/debian/">Docker Engine</a></li>
-<li>Install<br>
-<a href="https://docs.docker.com/compose/install/#install-compose-on-linux-systems">docker-compose</a></li>
-<li>Verify that <code>docker</code> and <code>docker-compose</code> commands work</li>
-</ol>
-<h2 id="installation" class="docmd-heading"><a href="#installation" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Installation</h2>
-<ol>
-<li><p>Clone the repo: <code>git clone https://github.com/rishighan/threetwo.git</code></p>
-</li>
-<li><p>Change the directory: <code>cd threetwo</code></p>
-</li>
-<li><p>Create directories within <code>threetwo</code></p>
-<pre class="hljs"><code class="language-bash"><span class="hljs-keyword">mkdir</span> comics userdata
-
-<span class="hljs-keyword">mkdir</span> userdata<span class="hljs-punctuation">/</span>covers userdata<span class="hljs-punctuation">/</span>temporary userdata<span class="hljs-punctuation">/</span>expanded
-</code></pre>
-</li>
-<li><p>Create an external docker network using <code>sudo docker network create proxy</code></p>
-</li>
-<li><p>Run <code>sudo docker-compose up --build -d</code></p>
-</li>
-<li><p>Wait for a hot minute</p>
-</li>
-</ol>
-<h2 id="post-install-checks" class="docmd-heading"><a href="#post-install-checks" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Post-install checks</h2>
-<ol>
-<li>Once the <code>docker-compose up</code> command successfully completes, you can check<br>
-the spun-up containers using <code>docker ps</code></li>
-</ol>
+<h2 id="contributing" class="docmd-heading"><a href="#contributing" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Contributing</h2>
+<p>Once your local environment is up and running, feel free to open a pull<br>
+request against the relevant repository. If you run into issues setting<br>
+things up, reach out on <a href="https://discord.gg/DbpcSNuM">Discord</a> or open an<br>
+issue on the repo.</p>
 
                 
                   <div class="page-navigation">
                     
-                      <a href="../../v0.0.1/intro/" class="prev-page">
+                      <a href="../component-versions/" class="prev-page">
                         
 <svg class="lucide-icon icon-arrow-left page-nav-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
   class="lucide lucide-arrow-left"
@@ -982,34 +1020,13 @@ the spun-up containers using <code>docker ps</code></li>
 </svg>
 
                         <span><small>Previous</small><strong>
-                            Introduction
+                            Component Versions
                           </strong></span>
                       </a>
                     
                     
-                      <a href="../../v0.0.1/unraid_dockercompose/" class="next-page">
-                        <span><small>Next</small>
-                          <strong>
-                            Docker Compose
-                          </strong></span>
-                        
-<svg class="lucide-icon icon-arrow-right page-nav-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
-  class="lucide lucide-arrow-right"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M5 12h14" />
-  <path d="m12 5 7 7-7 7" />
-</svg>
-
-                      </a>
+                      <div class="next-page-placeholder">
+                      </div>
                     
                   </div>
                 
@@ -1038,7 +1055,11 @@ the spun-up containers using <code>docker ps</code></li>
     <ul class="toc-list">
       
         <li class="toc-item toc-level-2">
-          <a href="#notes" class="toc-link">Notes</a>
+          <a href="#overview" class="toc-link">Overview</a>
+        </li>
+      
+        <li class="toc-item toc-level-2">
+          <a href="#repositories" class="toc-link">Repositories</a>
         </li>
       
         <li class="toc-item toc-level-2">
@@ -1046,23 +1067,15 @@ the spun-up containers using <code>docker ps</code></li>
         </li>
       
         <li class="toc-item toc-level-2">
-          <a href="#getting-the-vm-up-and-running" class="toc-link">Getting the VM up and running</a>
+          <a href="#setting-up-backing-services" class="toc-link">Setting up backing services</a>
         </li>
       
         <li class="toc-item toc-level-2">
-          <a href="#installing-debian-on-the-vm" class="toc-link">Installing Debian on the VM</a>
+          <a href="#running-the-app" class="toc-link">Running the app</a>
         </li>
       
         <li class="toc-item toc-level-2">
-          <a href="#docker-pre-requisites" class="toc-link">Docker pre-requisites</a>
-        </li>
-      
-        <li class="toc-item toc-level-2">
-          <a href="#installation" class="toc-link">Installation</a>
-        </li>
-      
-        <li class="toc-item toc-level-2">
-          <a href="#post-install-checks" class="toc-link">Post-install checks</a>
+          <a href="#contributing" class="toc-link">Contributing</a>
         </li>
       
     </ul>
@@ -1094,13 +1107,13 @@ the spun-up containers using <code>docker ps</code></li>
         </div>
       </div>
       
-      <script src="../../assets/js/docmd-main.js?v=mri04hn9"></script>
+      <script src="../assets/js/docmd-main.js?v=mri04hn9"></script>
       
-      <script src="../../assets/js/docmd-git.js?v=mri04hn9"></script>
-      <script src="../../assets/js/docmd-image-lightbox.js?v=mri04hn9" ></script>
+      <script src="../assets/js/docmd-git.js?v=mri04hn9"></script>
+      <script src="../assets/js/docmd-image-lightbox.js?v=mri04hn9" ></script>
 <script src="https://cdn.jsdelivr.net/npm/minisearch@7.2.0/dist/umd/index.min.js" ></script>
-<script src="../../assets/js/docmd-search.js?v=mri04hn9" ></script>
-<script src="../../assets/js/docmd-git.js?v=mri04hn9" type="module"></script>
+<script src="../assets/js/docmd-search.js?v=mri04hn9" ></script>
+<script src="../assets/js/docmd-git.js?v=mri04hn9" type="module"></script>
 
   <!-- Search Modal (Injected by @docmd/plugin-search) -->
   <div id="docmd-search-modal" class="docmd-search-modal" style="display: none;" data-show-confidence="false" data-show-filters="true"

@@ -4,10 +4,10 @@ title: "Install ThreeTwo! on unRaid"
 source: /v0.0.1/unraid_install/
 path: /v0.0.1/unraid_install/
 version: v0.0.1
-updated: 2026-07-10
+updated: 2026-07-12
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-10T16:44:12.847Z"
+  generated_at: "2026-07-12T16:22:14.069Z"
 ---
 ---
 sidebar_position: 2

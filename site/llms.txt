@@ -7,6 +7,7 @@
 - [Technical Architecture](/architecture/)
 - [Component Versions](/component-versions/)
 - [Introduction](/intro/)
+- [Local Development](/local-development/)
 - [Resources & Help](/resources/)
 - [Install ThreeTwo! on unRAID with docker-compose](/unraid_dockercompose/)
 - [Install ThreeTwo](/unraid_install/)

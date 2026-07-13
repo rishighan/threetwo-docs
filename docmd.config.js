@@ -52,6 +52,16 @@ export default {
       ],
     },
     {
+      title: "For developers",
+      children: [
+        {
+          title: "Local Development",
+          path: "/local-development",
+          icon: "terminal",
+        },
+      ],
+    },
+    {
       title: "GitHub",
       path: "https://github.com/rishighan/threetwo",
       icon: "github",
