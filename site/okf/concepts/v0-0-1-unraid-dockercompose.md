@@ -4,10 +4,10 @@ title: "Install ThreeTwo! on unRAID with docker-compose"
 source: /v0.0.1/unraid_dockercompose/
 path: /v0.0.1/unraid_dockercompose/
 version: v0.0.1
-updated: 2026-07-12
+updated: 2026-07-13
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-12T16:22:14.069Z"
+  generated_at: "2026-07-13T17:31:36.799Z"
 ---
 ---
 sidebar_position: 2
