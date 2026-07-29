@@ -6,13 +6,13 @@
     "description": "",
     "url": "",
     "generated_by": "@docmd/plugin-okf",
-    "generated_at": "2026-07-13T17:31:36.799Z",
+    "generated_at": "2026-07-29T02:01:49.801Z",
     "default_type": "concept"
   },
   "stats": {
-    "concepts": 19,
+    "concepts": 10,
     "by_type": {
-      "concept": 19
+      "concept": 10
     },
     "locales": [],
     "versions": [
@@ -23,21 +23,21 @@
   },
   "concepts": [
     {
-      "id": "architecture",
-      "type": "concept",
-      "title": "Technical Architecture",
-      "path": "/architecture/",
-      "file": "concepts/architecture.md",
-      "locale": "",
-      "version": "latest",
-      "tags": []
-    },
-    {
       "id": "component-versions",
       "type": "concept",
       "title": "Component Versions",
       "path": "/component-versions/",
       "file": "concepts/component-versions.md",
+      "locale": "",
+      "version": "latest",
+      "tags": []
+    },
+    {
+      "id": "installation",
+      "type": "concept",
+      "title": "Installation",
+      "path": "/installation/",
+      "file": "concepts/installation.md",
       "locale": "",
       "version": "latest",
       "tags": []
@@ -63,51 +63,21 @@
       "tags": []
     },
     {
-      "id": "resources",
-      "type": "concept",
-      "title": "Resources & Help",
-      "path": "/resources/",
-      "file": "concepts/resources.md",
-      "locale": "",
-      "version": "latest",
-      "tags": []
-    },
-    {
-      "id": "unraid-dockercompose",
-      "type": "concept",
-      "title": "Install ThreeTwo! on unRAID with docker-compose",
-      "path": "/unraid_dockercompose/",
-      "file": "concepts/unraid-dockercompose.md",
-      "locale": "",
-      "version": "latest",
-      "tags": []
-    },
-    {
-      "id": "unraid-install",
-      "type": "concept",
-      "title": "Install ThreeTwo",
-      "path": "/unraid_install/",
-      "file": "concepts/unraid-install.md",
-      "locale": "",
-      "version": "latest",
-      "tags": []
-    },
-    {
-      "id": "v0-0-1-beta-architecture",
-      "type": "concept",
-      "title": "Technical Architecture",
-      "path": "/v0.0.1-beta/architecture/",
-      "file": "concepts/v0-0-1-beta-architecture.md",
-      "locale": "",
-      "version": "v0.0.1-beta",
-      "tags": []
-    },
-    {
       "id": "v0-0-1-beta-component-versions",
       "type": "concept",
       "title": "Component Versions - v0.0.1-beta",
       "path": "/v0.0.1-beta/component-versions/",
       "file": "concepts/v0-0-1-beta-component-versions.md",
+      "locale": "",
+      "version": "v0.0.1-beta",
+      "tags": []
+    },
+    {
+      "id": "v0-0-1-beta-installation",
+      "type": "concept",
+      "title": "Installation",
+      "path": "/v0.0.1-beta/installation/",
+      "file": "concepts/v0-0-1-beta-installation.md",
       "locale": "",
       "version": "v0.0.1-beta",
       "tags": []
@@ -123,46 +93,6 @@
       "tags": []
     },
     {
-      "id": "v0-0-1-beta-resources",
-      "type": "concept",
-      "title": "Resources & Help",
-      "path": "/v0.0.1-beta/resources/",
-      "file": "concepts/v0-0-1-beta-resources.md",
-      "locale": "",
-      "version": "v0.0.1-beta",
-      "tags": []
-    },
-    {
-      "id": "v0-0-1-beta-unraid-dockercompose",
-      "type": "concept",
-      "title": "Install ThreeTwo! on unRAID with docker-compose",
-      "path": "/v0.0.1-beta/unraid_dockercompose/",
-      "file": "concepts/v0-0-1-beta-unraid-dockercompose.md",
-      "locale": "",
-      "version": "v0.0.1-beta",
-      "tags": []
-    },
-    {
-      "id": "v0-0-1-beta-unraid-install",
-      "type": "concept",
-      "title": "Install ThreeTwo! on unRaid",
-      "path": "/v0.0.1-beta/unraid_install/",
-      "file": "concepts/v0-0-1-beta-unraid-install.md",
-      "locale": "",
-      "version": "v0.0.1-beta",
-      "tags": []
-    },
-    {
-      "id": "v0-0-1-architecture",
-      "type": "concept",
-      "title": "Technical Architecture",
-      "path": "/v0.0.1/architecture/",
-      "file": "concepts/v0-0-1-architecture.md",
-      "locale": "",
-      "version": "v0.0.1",
-      "tags": []
-    },
-    {
       "id": "v0-0-1-component-versions",
       "type": "concept",
       "title": "Component Versions - v0.0.1",
@@ -173,41 +103,21 @@
       "tags": []
     },
     {
+      "id": "v0-0-1-installation",
+      "type": "concept",
+      "title": "Installation",
+      "path": "/v0.0.1/installation/",
+      "file": "concepts/v0-0-1-installation.md",
+      "locale": "",
+      "version": "v0.0.1",
+      "tags": []
+    },
+    {
       "id": "v0-0-1-intro",
       "type": "concept",
       "title": "Introduction",
       "path": "/v0.0.1/intro/",
       "file": "concepts/v0-0-1-intro.md",
-      "locale": "",
-      "version": "v0.0.1",
-      "tags": []
-    },
-    {
-      "id": "v0-0-1-resources",
-      "type": "concept",
-      "title": "Resources & Help",
-      "path": "/v0.0.1/resources/",
-      "file": "concepts/v0-0-1-resources.md",
-      "locale": "",
-      "version": "v0.0.1",
-      "tags": []
-    },
-    {
-      "id": "v0-0-1-unraid-dockercompose",
-      "type": "concept",
-      "title": "Install ThreeTwo! on unRAID with docker-compose",
-      "path": "/v0.0.1/unraid_dockercompose/",
-      "file": "concepts/v0-0-1-unraid-dockercompose.md",
-      "locale": "",
-      "version": "v0.0.1",
-      "tags": []
-    },
-    {
-      "id": "v0-0-1-unraid-install",
-      "type": "concept",
-      "title": "Install ThreeTwo! on unRaid",
-      "path": "/v0.0.1/unraid_install/",
-      "file": "concepts/v0-0-1-unraid-install.md",
       "locale": "",
       "version": "v0.0.1",
       "tags": []

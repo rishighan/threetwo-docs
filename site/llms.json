@@ -3,14 +3,14 @@
   "description": "",
   "pages": [
     {
-      "title": "Technical Architecture",
-      "url": "/architecture/",
+      "title": "Component Versions",
+      "url": "/component-versions/",
       "description": "",
       "priority": "medium"
     },
     {
-      "title": "Component Versions",
-      "url": "/component-versions/",
+      "title": "Installation",
+      "url": "/installation/",
       "description": "",
       "priority": "medium"
     },
@@ -27,32 +27,14 @@
       "priority": "medium"
     },
     {
-      "title": "Resources & Help",
-      "url": "/resources/",
-      "description": "",
-      "priority": "medium"
-    },
-    {
-      "title": "Install ThreeTwo! on unRAID with docker-compose",
-      "url": "/unraid_dockercompose/",
-      "description": "",
-      "priority": "medium"
-    },
-    {
-      "title": "Install ThreeTwo",
-      "url": "/unraid_install/",
-      "description": "",
-      "priority": "medium"
-    },
-    {
-      "title": "Technical Architecture",
-      "url": "/v0.0.1-beta/architecture/",
-      "description": "",
-      "priority": "medium"
-    },
-    {
       "title": "Component Versions - v0.0.1-beta",
       "url": "/v0.0.1-beta/component-versions/",
+      "description": "",
+      "priority": "medium"
+    },
+    {
+      "title": "Installation",
+      "url": "/v0.0.1-beta/installation/",
       "description": "",
       "priority": "medium"
     },
@@ -63,56 +45,20 @@
       "priority": "medium"
     },
     {
-      "title": "Resources & Help",
-      "url": "/v0.0.1-beta/resources/",
-      "description": "",
-      "priority": "medium"
-    },
-    {
-      "title": "Install ThreeTwo! on unRAID with docker-compose",
-      "url": "/v0.0.1-beta/unraid_dockercompose/",
-      "description": "",
-      "priority": "medium"
-    },
-    {
-      "title": "Install ThreeTwo! on unRaid",
-      "url": "/v0.0.1-beta/unraid_install/",
-      "description": "",
-      "priority": "medium"
-    },
-    {
-      "title": "Technical Architecture",
-      "url": "/v0.0.1/architecture/",
-      "description": "",
-      "priority": "medium"
-    },
-    {
       "title": "Component Versions - v0.0.1",
       "url": "/v0.0.1/component-versions/",
       "description": "",
       "priority": "medium"
     },
     {
+      "title": "Installation",
+      "url": "/v0.0.1/installation/",
+      "description": "",
+      "priority": "medium"
+    },
+    {
       "title": "Introduction",
       "url": "/v0.0.1/intro/",
-      "description": "",
-      "priority": "medium"
-    },
-    {
-      "title": "Resources & Help",
-      "url": "/v0.0.1/resources/",
-      "description": "",
-      "priority": "medium"
-    },
-    {
-      "title": "Install ThreeTwo! on unRAID with docker-compose",
-      "url": "/v0.0.1/unraid_dockercompose/",
-      "description": "",
-      "priority": "medium"
-    },
-    {
-      "title": "Install ThreeTwo! on unRaid",
-      "url": "/v0.0.1/unraid_install/",
       "description": "",
       "priority": "medium"
     }

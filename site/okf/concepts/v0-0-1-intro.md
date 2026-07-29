@@ -4,10 +4,10 @@ title: Introduction
 source: /v0.0.1/intro/
 path: /v0.0.1/intro/
 version: v0.0.1
-updated: 2026-07-13
+updated: 2026-07-29
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-13T17:31:36.799Z"
+  generated_at: "2026-07-29T02:01:49.801Z"
 ---
 ---
 sidebar_position: 1

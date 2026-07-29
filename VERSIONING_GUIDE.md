@@ -22,10 +22,7 @@ The documentation currently supports 3 versions:
 threetwo-docs/
 ├── docs/                    # Latest/Development version
 │   ├── intro.md
-│   ├── unraid_install.md
-│   ├── unraid_dockercompose.md
-│   ├── architecture.md
-│   ├── resources.md
+│   ├── installation.md
 │   └── navigation.json      # Version-specific navigation
 ├── docs-beta/              # v0.0.1-beta version
 │   ├── intro.md
@@ -127,24 +124,15 @@ npm run dev           # Test locally at http://localhost:3000
 ```text
 Latest Version (at root):
   /intro
-  /unraid_install
-  /architecture
-  /resources
-  /unraid_dockercompose
+  /installation
 
 v0.0.1-beta Version:
   /v0.0.1-beta/intro
-  /v0.0.1-beta/unraid_install
-  /v0.0.1-beta/architecture
-  /v0.0.1-beta/resources
-  /v0.0.1-beta/unraid_dockercompose
+  /v0.0.1-beta/installation
 
 v0.0.1 Version:
   /v0.0.1/intro
-  /v0.0.1/unraid_install
-  /v0.0.1/architecture
-  /v0.0.1/resources
-  /v0.0.1/unraid_dockercompose
+  /v0.0.1/installation
 ```
 
 ## Generated Site Structure
@@ -155,17 +143,14 @@ After `npm run build`, your site structure will be:
 site/
 ├── index.html (redirects or latest intro)
 ├── intro/index.html
-├── unraid_install/index.html
-├── architecture/index.html
-├── resources/index.html
-├── unraid_dockercompose/index.html
+├── installation/index.html
 ├── v0.0.1-beta/
 │   ├── intro/index.html
-│   ├── architecture/index.html
+│   ├── installation/index.html
 │   └── ...
 └── v0.0.1/
     ├── intro/index.html
-    ├── architecture/index.html
+    ├── installation/index.html
     └── ...
 ```
 

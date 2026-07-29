@@ -4,45 +4,6 @@
 
 ---
 
-## [Technical Architecture](/architecture/)
-
----
-sidebar_position: 4
-id: architecture
-title: Technical Architecture
----
-
-## High-level Architecture
-
-`ThreeTwo!`, the app is built upon the microservice architecture. The UI is a
-standalone `node.js` app and the rest of the logic is broken into microservices.
-
-The microservices deal with:
-
-1. Library functions (model orchestration, CRUD ops on comics, metadata)
-2. Comic Vine (scraping issues, volumes and more)
-3. Grand Comics Database (scraping, aggregations and more)
-4. Helpers (image transformation, file-system ops, compression/uncompression)
-
-## Technical stack
-
-`ThreeTwo!` is written in `TypeScript` from UI to the services layer.
-
-The technologies used are:
-
-1. React
-2. Redux
-3. moleculer
-4. RabbitMQ
-5. socket.io
-6. node.js
-7. Express
-8. MongoDB
-9. mongoose
-
-
----
-
 ## [Component Versions](/component-versions/)
 
 # Component Versions
@@ -102,6 +63,19 @@ docker inspect <container-name> | grep -i version
 - **Metadata Service**: [v0.0.1](https://github.com/rishighan/threetwo-metadata-service/releases/tag/v0.0.1)
 - **Core Service**: [v0.0.1](https://github.com/rishighan/threetwo-core-service/releases/tag/v0.0.1)
 - **Acquisition Service**: [v0.0.1](https://github.com/rishighan/threetwo-acquisition-service/releases/tag/v0.0.1)
+
+
+---
+
+## [Installation](/installation/)
+
+---
+sidebar_position: 2
+id: installation
+title: Installation
+---
+
+## Installation
 
 
 ---
@@ -173,343 +147,97 @@ title: Local Development
 
 ## Overview
 
-`ThreeTwo!` is built as a set of microservices alongside a `node.js`/`React`
-UI. To develop locally, you'll be running the UI and the relevant
-microservices side-by-side, backed by `MongoDB`, `Elasticsearch` and `Redis`.
+`ThreeTwo!` is built on microservices. A `compose.yaml` brings the UI up along with the service dependencies.
 
 ## Repositories
 
+To develop `ThreeTwo!` locally, begin by cloning these repositories to your machine:
+
 - [threetwo](https://github.com/rishighan/threetwo) - the main UI application
-- [threetwo-metadata-service](https://github.com/rishighan/threetwo-metadata-service) - ComicVine and other metadata scraping
-- [threetwo-core-service](https://github.com/rishighan/threetwo-core-service) - GCD, MAL and other core functions
-- [threetwo-acquisition-service](https://github.com/rishighan/threetwo-acquisition-service) - `AirDC++`-backed acquisition
+- [threetwo-metadata-service](https://github.com/rishighan/threetwo-metadata-service) - Library management and core endpoints.
+- [threetwo-core-service](https://github.com/rishighan/threetwo-core-service) - Metadata related endpoints.
+- [threetwo-acquisition-service](https://github.com/rishighan/threetwo-acquisition-service) - `AirDC++` and other acquisition-related endpoints.
 
 ## Pre-requisites
 
-- `node.js` (see the `engines` field of each repo's `package.json` for the
-  supported version)
-- `docker` and `docker compose` (or `podman`) for spinning up backing services
-  like `MongoDB`, `Elasticsearch` and `Redis`
-- A `ComicVine` API key for metadata scraping to work locally
+1. Linux/macOS/Windows
+2. `docker compose or podman compose`
+3. Create 2 folders named `userdata` and `comics` inside `threetwo-core-service` folder. 
+4. `AirDC++` instance installed and running for DC++ downloads.
+5. `qBittorrent` instance installed and running for torrent downloads.
 
-## Setting up backing services
 
-The easiest way to get `MongoDB`, `Elasticsearch` and `Redis` running locally
-is via `docker compose`. See the
-[Docker Compose guide](/unraid_dockercompose) for a reference stack you can
-adapt for local use, minus the `threetwo` and microservice containers
-themselves, since you'll be running those directly from source.
+## Setting up dependencies (critical step)
 
-## Running the app
+`threetwo-core-service` comes with a `dependencies.docker-compose.yml` that has all the infrastructure for running the entire services stack.
+Bring it up with: 
+```
+docker system prune -af && docker compose -f dependencies.docker-compose.yml up
+```
 
-1. Clone the repositories you need above.
-2. Install dependencies in each with `npm install`.
-3. Copy `.env.example` (or create a `.env`) in each service, pointing at your
-   local `MongoDB`, `Elasticsearch` and `Redis` instances.
-4. Start each microservice you need with its `dev` script.
-5. Start the UI with its `dev` script, which will proxy requests to the
-   running microservices.
+
+## Bring up the services, one by one
+
+### Explanation of Environment Variables
+
+You will see these vars in several startup commands. The following table explains what they are.
+
+| Environment Variable | Explanation | Required | Value |
+|---|---|---|---|
+| `COMICS_DIRECTORY` | folder containing the comics | Yes | Supply your own |
+| `USERDATA_DIRECTORY` | scratch folder | Yes | Supply your own |
+| `REDIS_URI` | Redis instance URI | Yes | `redis://127.0.0.1:6379` |
+| `ELASTICSEARCH_URI` | Elasticsearch instance URI | Yes |  `http://localhost:9200` |
+| `KAFKA_BROKER` | Kafka broker URI | Yes | `kafka1:9092` |
+| `UNRAR_BIN_PATH` | Path to unrar in the container | Yes | Supply your own |
+| `SEVENZ_BINARY_PATH` | Path to 7za in the container | Yes | Supply your own |
+| `COMICVINE_API_KEY` | ComicVine API Key | Yes | Supply your own |
+
+### `threetwo-core-service`
+
+Bring up core service with: 
+
+```
+COMICS_DIRECTORY=<ABSOLUTE PATH TO COMICS DIRECTORY> \
+USERDATA_DIRECTORY=<ABSOLUTE PATH TO USERDATA DIRECTORY> \
+REDIS_URI=redis://127.0.0.1:6379 \
+ELASTICSEARCH_URI=http://localhost:9200 \
+MONGO_URI=mongodb://localhost:27017/threetwo \
+KAFKA_BROKER=kafka1:9092 \
+UNRAR_BIN_PATH=/opt/homebrew/bin/unrar \
+SEVENZ_BINARY_PATH=/opt/homebrew/bin/7za \
+npm run dev
+```
+
+### `threetwo-metadata-service`
+
+```
+COMICVINE_API_KEY=<YOUR COMICVINE API KEY> \
+REDIS_URI=redis://127.0.0.1:6379 \
+USERDATA_DIRECTORY=<ABSOLUTE PATH TO USERDATA DIRECTORY> \
+npm run dev
+```
+
+### `threetwo-acquisition-service`
+
+```
+KAFKA_BROKER=kafka1:9092 npm run dev
+```
+
+## Bring up the UI
+
+From within the `threetwo` folder, simply run:
+
+```
+yarn dev
+```
 
 ## Contributing
 
 Once your local environment is up and running, feel free to open a pull
 request against the relevant repository. If you run into issues setting
 things up, reach out on [Discord](https://discord.gg/DbpcSNuM) or open an
-issue on the repo.
-
-
----
-
-## [Resources & Help](/resources/)
-
----
-sidebar_position: 3
-id: resources
-title: Resources & Help
----
-
-## Quick Links
-
-- The source code for `ThreeTwo!` is located here:
-  [https://github.com/rishighan/threetwo](https://github.com/rishighan/threetwo)
-- The official `Discord` server is here:
-  [https://discord.gg/DbpcSNuM](https://discord.gg/DbpcSNuM)
-- If you encounter problems, the best recourse to getting help is creating an
-  issue on the repo:
-  [https://github.com/rishighan/threetwo/issues](https://github.com/rishighan/threetwo/issues)
-- For other questions just pop them into the Discord channel
-
-
----
-
-## [Install ThreeTwo! on unRAID with docker-compose](/unraid_dockercompose/)
-
----
-sidebar_position: 2
-id: unRAID_dockercompose
-title: Install ThreeTwo! on unRAID with docker-compose
----
-
-## Notes
-
-This guide goes over ThreeTwo! installation on unRAID using the
-[docker-compose manager](https://forums.unRAID.net/topic/114415-plugin-docker-compose-manager/)
-plugin. Currently, this is the recommended approach for unRAID users.
-
-With the help of this plugin, you are able to pull the entire ThreeTwo!
-`docker-compose` stack up, down with the click of a button. It abstracts away
-a lot of complexity associated with writing out commands in the console.
-
-That said, the plugin is still in beta, so you may experience strange behavior.
-
-## Pre-requisites
-
-First things first, let's go over what the pre-requisites are:
-
-1. The `docker-compose` configuration for ThreeTwo! is in its own repository
-   [threetwo-docker-compose](https://github.com/rishighan/threetwo-docker-compose).
-   You will be using this as reference.
-2. A working `AirDC++` install is necessary for `DC++` searching/downloading to
-   work. You can install it through the unRAID via the CA store or via a
-   [Docker image](https://airdcpp.net/download#linux-nas-docker-other)
-3. `comics` and `userdata` folders.
-   1. The `comics` folder _must_ be the folder `AirDC++` downloads comics to.
-   2. Create the `userdata` folder under `/mnt/user/appdata/threetwo`
-4. To get ComicVine to work for metadata scraping and other functions, you
-   _must_ have a ComicVine API key. You can get one
-   [on the ComicVine website](https://comicvine.gamespot.com/api/). Metadata
-   scraping will not work unless you supply an API key.
-5. Open an unRAID terminal and create an `.env` file:
-   1. Run this command:
-      `nano /boot/config/plugins/compose.manager/projects/ThreeTwo/.env`
-   2. Paste this into the file, replacing anything within `<>` with actual
-      values:
-
-      ```bash
-      UNDERLYING_HOSTNAME=<UNRAID_HOSTNAME>
-      COMICS_DIRECTORY=<PATH_TO_COMICS_DIRECTORY>
-      USERDATA_DIRECTORY=/mnt/user/appdata/threetwo/userdata
-
-      COMICVINE_API_KEY=<YOUR_COMICVINE_API_KEY>
-
-      LOGGER=true
-      LOGLEVEL=info
-      SERVICEDIR=dist/services
-
-      CHOKIDAR_USEPOLLING=true
-
-      UNRAR_BIN_PATH=/usr/bin/unrar
-      SEVENZ_BINARY_PATH=/usr/bin/7za
-      MONGO_URI=mongodb://db:27017/threetwo
-      ELASTICSEARCH_URI=http://elasticsearch:9200
-      REDIS_URI=redis://redis:6379
-      TRANSPORTER=redis://redis:6379
-      CACHER=Memory
-      ```
-
-## Installation
-
-1. Install the `docker-compose manager` plugin from the unRAID CA store. After
-   installation, you can find the plugin UI under the `Docker` tab.
-2. Create a new stack, give it a name.
-3. Hover over the gear next to it and click on `Edit Stack`.
-4. Copy-paste this into the textarea:
-
-   ```yaml
-   version: "3.7"
-
-   x-userdata-volume: &userdata-volume
-     type: bind
-     source: ${USERDATA_DIRECTORY}
-     target: /userdata
-
-   x-comics-volume: &comics-volume
-     type: bind
-     source: ${COMICS_DIRECTORY}
-     target: /comics
-
-   services:
-     threetwo:
-       build:
-         context: https://github.com/rishighan/threetwo.git
-         dockerfile: Dockerfile
-       image: frishi/threetwo
-       container_name: threetwo-ui
-       env_file: /boot/config/plugins/compose.manager/projects/ThreeTwo/.env
-       restart: unless-stopped
-       ports:
-         - "8050:8050"
-         - "3050:3050"
-       links:
-         - core-services
-       depends_on:
-         - db
-         - elasticsearch
-         - redis
-       networks:
-         - proxy
-
-     metadata-service:
-       build:
-         context: https://github.com/rishighan/threetwo-metadata-service.git
-       image: frishi/threetwo-metadata-service
-       container_name: metadata-service
-       ports:
-         - "3080:3080"
-       environment:
-         SERVICES: api,comicvine
-       env_file: /boot/config/plugins/compose.manager/projects/ThreeTwo/.env
-       depends_on:
-         - db
-         - redis
-       networks:
-         - proxy
-
-     core-services:
-       build:
-         context: https://github.com/rishighan/threetwo-core-service.git
-       image: frishi/threetwo-core-service
-       container_name: core-services
-       ports:
-         - "3000:3000"
-       environment:
-         SERVICES: gcd,mal
-       env_file: /boot/config/plugins/compose.manager/projects/ThreeTwo/.env
-       depends_on:
-         - db
-         - redis
-       networks:
-         - proxy
-
-     db:
-       image: mongo:4.4
-       container_name: mongo-db
-       restart: unless-stopped
-       ports:
-         - "27017:27017"
-       environment:
-         MONGO_INITDB_DATABASE: threetwo
-       volumes:
-         - /mnt/user/appdata/threetwo/db/data:/data/db
-         - /mnt/user/appdata/threetwo/db/config:/data/configdb
-       networks:
-         - proxy
-
-     elasticsearch:
-       image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0
-       container_name: elasticsearch
-       restart: unless-stopped
-       environment:
-         - discovery.type=single-node
-         - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-       ulimits:
-         memlock:
-           soft: -1
-           hard: -1
-       volumes:
-         - /mnt/user/appdata/threetwo/elasticsearch/data:/usr/share/elasticsearch/data
-       ports:
-         - "9200:9200"
-       networks:
-         - proxy
-
-     redis:
-       image: redis:6-alpine
-       container_name: redis
-       restart: unless-stopped
-       ports:
-         - "6379:6379"
-       volumes:
-         - /mnt/user/appdata/threetwo/redis:/data
-       networks:
-         - proxy
-
-   volumes:
-     userdata:
-       <<: *userdata-volume
-     comics:
-       <<: *comics-volume
-
-   networks:
-     proxy:
-       driver: bridge
-   ```
-
-5. Save and pop the stack `up`
-
-## Post-install checks
-
-1. Once the stack comes up, you should be able to access the ThreeTwo! UI on
-   port `8050`
-2. Check the logs of the containers to see if there are any errors
-
-
----
-
-## [Install ThreeTwo](/unraid_install/)
-
----
-sidebar_position: 2
-id: unraid_install
-title: Install ThreeTwo
----
-
-### Notes
-
-This is the currently recommended method of installation. Container-based installation is going to offer 
-you the most flexibility in terms of setting storage volumes and reducing setup time.
-
-### Pre-requisites
-
-This guide assumes the following:
-
-- You are running an OS that supports:
-- `docker` and `docker compose` or
-- `podman` and `podman compose`
-
-### Installation details
-
-You will be installing the `threetwo-ui` along with its dependencies, the microservices 
-that constitute all of its major functions.
-
-
----
-
-## [Technical Architecture](/v0.0.1-beta/architecture/)
-
----
-sidebar_position: 4
-id: architecture
-title: Technical Architecture
----
-
-## High-level Architecture
-
-`ThreeTwo!`, the app is built upon the microservice architecture. The UI is a
-standalone `node.js` app and the rest of the logic is broken into microservices.
-
-The microservices deal with:
-
-1. Library functions (model orchestration, CRUD ops on comics, metadata)
-2. Comic Vine (scraping issues, volumes and more)
-3. Grand Comics Database (scraping, aggregations and more)
-4. Helpers (image transformation, file-system ops, compression/uncompression)
-
-## Technical stack
-
-`ThreeTwo!` is written in `TypeScript` from UI to the services layer.
-
-The technologies used are:
-
-1. React
-2. Redux
-3. moleculer
-4. RabbitMQ
-5. socket.io
-6. node.js
-7. Express
-8. MongoDB
-9. mongoose
+issue on the corresponding repo.
 
 
 ---
@@ -577,6 +305,19 @@ docker inspect <container-name> | grep -i version
 
 ---
 
+## [Installation](/v0.0.1-beta/installation/)
+
+---
+sidebar_position: 2
+id: installation
+title: Installation
+---
+
+## Installation
+
+
+---
+
 ## [Introduction](/v0.0.1-beta/intro/)
 
 ---
@@ -630,350 +371,6 @@ Just configure your `AirDC++` host, hub information and you are golden.
 
 You can access your massive comic collection via `OPDS` through apps on your
 mobile devices, like `Panels` on `iOS`
-
-
----
-
-## [Resources & Help](/v0.0.1-beta/resources/)
-
----
-sidebar_position: 3
-id: resources
-title: Resources & Help
----
-
-## Quick Links
-
-- The source code for `ThreeTwo!` is located here:
-  [https://github.com/rishighan/threetwo](https://github.com/rishighan/threetwo)
-- The official `Discord` server is here:
-  [https://discord.gg/DbpcSNuM](https://discord.gg/DbpcSNuM)
-- If you encounter problems, the best recourse to getting help is creating an
-  issue on the repo:
-  [https://github.com/rishighan/threetwo/issues](https://github.com/rishighan/threetwo/issues)
-- For other questions just pop them into the Discord channel
-
-
----
-
-## [Install ThreeTwo! on unRAID with docker-compose](/v0.0.1-beta/unraid_dockercompose/)
-
----
-sidebar_position: 2
-id: unRAID_dockercompose
-title: Install ThreeTwo! on unRAID with docker-compose
----
-
-## Notes
-
-This guide goes over ThreeTwo! installation on unRAID using the
-[docker-compose manager](https://forums.unRAID.net/topic/114415-plugin-docker-compose-manager/)
-plugin. Currently, this is the recommended approach for unRAID users.
-
-With the help of this plugin, you are able to pull the entire ThreeTwo!
-`docker-compose` stack up, down with the click of a button. It abstracts away
-a lot of complexity associated with writing out commands in the console.
-
-That said, the plugin is still in beta, so you may experience strange behavior.
-
-## Pre-requisites
-
-First things first, let's go over what the pre-requisites are:
-
-1. The `docker-compose` configuration for ThreeTwo! is in its own repository
-   [threetwo-docker-compose](https://github.com/rishighan/threetwo-docker-compose).
-   You will be using this as reference.
-2. A working `AirDC++` install is necessary for `DC++` searching/downloading to
-   work. You can install it through the unRAID via the CA store or via a
-   [Docker image](https://airdcpp.net/download#linux-nas-docker-other)
-3. `comics` and `userdata` folders.
-   1. The `comics` folder _must_ be the folder `AirDC++` downloads comics to.
-   2. Create the `userdata` folder under `/mnt/user/appdata/threetwo`
-4. To get ComicVine to work for metadata scraping and other functions, you
-   _must_ have a ComicVine API key. You can get one
-   [on the ComicVine website](https://comicvine.gamespot.com/api/). Metadata
-   scraping will not work unless you supply an API key.
-5. Open an unRAID terminal and create an `.env` file:
-   1. Run this command:
-      `nano /boot/config/plugins/compose.manager/projects/ThreeTwo/.env`
-   2. Paste this into the file, replacing anything within `<>` with actual
-      values:
-
-      ```bash
-      UNDERLYING_HOSTNAME=<UNRAID_HOSTNAME>
-      COMICS_DIRECTORY=<PATH_TO_COMICS_DIRECTORY>
-      USERDATA_DIRECTORY=/mnt/user/appdata/threetwo/userdata
-
-      COMICVINE_API_KEY=<YOUR_COMICVINE_API_KEY>
-
-      LOGGER=true
-      LOGLEVEL=info
-      SERVICEDIR=dist/services
-
-      CHOKIDAR_USEPOLLING=true
-
-      UNRAR_BIN_PATH=/usr/bin/unrar
-      SEVENZ_BINARY_PATH=/usr/bin/7za
-      MONGO_URI=mongodb://db:27017/threetwo
-      ELASTICSEARCH_URI=http://elasticsearch:9200
-      REDIS_URI=redis://redis:6379
-      TRANSPORTER=redis://redis:6379
-      CACHER=Memory
-      ```
-
-## Installation
-
-1. Install the `docker-compose manager` plugin from the unRAID CA store. After
-   installation, you can find the plugin UI under the `Docker` tab.
-2. Create a new stack, give it a name.
-3. Hover over the gear next to it and click on `Edit Stack`.
-4. Copy-paste this into the textarea:
-
-   ```yaml
-   version: "3.7"
-
-   x-userdata-volume: &userdata-volume
-     type: bind
-     source: ${USERDATA_DIRECTORY}
-     target: /userdata
-
-   x-comics-volume: &comics-volume
-     type: bind
-     source: ${COMICS_DIRECTORY}
-     target: /comics
-
-   services:
-     threetwo:
-       build:
-         context: https://github.com/rishighan/threetwo.git
-         dockerfile: Dockerfile
-       image: frishi/threetwo
-       container_name: threetwo-ui
-       env_file: /boot/config/plugins/compose.manager/projects/ThreeTwo/.env
-       restart: unless-stopped
-       ports:
-         - "8050:8050"
-         - "3050:3050"
-       links:
-         - core-services
-       depends_on:
-         - db
-         - elasticsearch
-         - redis
-       networks:
-         - proxy
-
-     metadata-service:
-       build:
-         context: https://github.com/rishighan/threetwo-metadata-service.git
-       image: frishi/threetwo-metadata-service
-       container_name: metadata-service
-       ports:
-         - "3080:3080"
-       environment:
-         SERVICES: api,comicvine
-       env_file: /boot/config/plugins/compose.manager/projects/ThreeTwo/.env
-       depends_on:
-         - db
-         - redis
-       networks:
-         - proxy
-
-     core-services:
-       build:
-         context: https://github.com/rishighan/threetwo-core-service.git
-       image: frishi/threetwo-core-service
-       container_name: core-services
-       ports:
-         - "3000:3000"
-       environment:
-         SERVICES: gcd,mal
-       env_file: /boot/config/plugins/compose.manager/projects/ThreeTwo/.env
-       depends_on:
-         - db
-         - redis
-       networks:
-         - proxy
-
-     db:
-       image: mongo:4.4
-       container_name: mongo-db
-       restart: unless-stopped
-       ports:
-         - "27017:27017"
-       environment:
-         MONGO_INITDB_DATABASE: threetwo
-       volumes:
-         - /mnt/user/appdata/threetwo/db/data:/data/db
-         - /mnt/user/appdata/threetwo/db/config:/data/configdb
-       networks:
-         - proxy
-
-     elasticsearch:
-       image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0
-       container_name: elasticsearch
-       restart: unless-stopped
-       environment:
-         - discovery.type=single-node
-         - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-       ulimits:
-         memlock:
-           soft: -1
-           hard: -1
-       volumes:
-         - /mnt/user/appdata/threetwo/elasticsearch/data:/usr/share/elasticsearch/data
-       ports:
-         - "9200:9200"
-       networks:
-         - proxy
-
-     redis:
-       image: redis:6-alpine
-       container_name: redis
-       restart: unless-stopped
-       ports:
-         - "6379:6379"
-       volumes:
-         - /mnt/user/appdata/threetwo/redis:/data
-       networks:
-         - proxy
-
-   volumes:
-     userdata:
-       <<: *userdata-volume
-     comics:
-       <<: *comics-volume
-
-   networks:
-     proxy:
-       driver: bridge
-   ```
-
-5. Save and pop the stack `up`
-
-## Post-install checks
-
-1. Once the stack comes up, you should be able to access the ThreeTwo! UI on
-   port `8050`
-2. Check the logs of the containers to see if there are any errors
-
-
----
-
-## [Install ThreeTwo! on unRaid](/v0.0.1-beta/unraid_install/)
-
----
-sidebar_position: 2
-id: unraid_install
-title: Install ThreeTwo! on unRaid
----
-
-## Notes
-
-- Currently, `ThreeTwo!` is installed along with its dependencies using
-  `docker-compose`. The easiest way to install it on `unRAID` is to use a VM.
-- Skip the VM creation steps, if you already have a Debian VM
-
-## Pre-requisites
-
-This guide assumes the following is installed or readily available:
-
-- `unRaid 6.9.2` (this version was tested against `6.9.2`)
-- `Debian 10.x` (Grab the install
-  [.iso](https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.1.0-amd64-netinst.iso))
-
-## Getting the VM up and running
-
-1. Download the `Debian` install `.iso`
-2. Place it in a folder accessible by the VM
-3. Go to the `VM` tab in your `unRaid` navigation
-4. Click `Add VM`
-5. From the list presented to you, click `Debian` under `Linux`
-6. On the VM configration page, enter the desired options for memory, CPU
-   cores, vdisk allocation
-7. Make sure that you have set the volume containing the comics correctly for
-   `Unraid Share`
-8. Make sure that you have also set the `Unraid Mount tag` option
-9. Make sure that the network bridge is set to `br0`
-10. Set a password for `VNC` so you can follow through with a graphical install
-    if you so wish
-
-## Installing Debian on the VM
-
-1. Launch the VM via `VNC Remote` option
-2. Follow the steps of the graphical installer
-3. Create a `root` user and a normal `user` and set the passwords for both
-
-## Docker pre-requisites
-
-1. [Make sure you have](https://unix.stackexchange.com/questions/354928/bash-sudo-command-not-found)
-   `sudo`
-2. Make sure you have `ssh` access for the user you created earlier
-3. `ssh` into the VM as the non-root user
-4. Install [Docker Engine](https://docs.docker.com/engine/install/debian/)
-5. Install
-   [docker-compose](https://docs.docker.com/compose/install/#install-compose-on-linux-systems)
-6. Verify that `docker` and `docker-compose` commands work
-
-## Installation
-
-1. Clone the repo: `git clone https://github.com/rishighan/threetwo.git`
-2. Change the directory: `cd threetwo`
-3. Create directories within `threetwo`
-
-   ```bash
-   mkdir comics userdata
-
-   mkdir userdata/covers userdata/temporary userdata/expanded
-   ```
-
-4. Create an external docker network using `sudo docker network create proxy`
-5. Run `sudo docker-compose up --build -d`
-6. Wait for a hot minute
-
-## Post-install checks
-
-1. Once the `docker-compose up` command successfully completes, you can check
-   the spun-up containers using `docker ps`
-
-
----
-
-## [Technical Architecture](/v0.0.1/architecture/)
-
----
-sidebar_position: 4
-id: architecture
-title: Technical Architecture
----
-
-## High-level Architecture
-
-`ThreeTwo!`, the app is built upon the microservice architecture. The UI is a
-standalone `node.js` app and the rest of the logic is broken into microservices.
-
-The microservices deal with:
-
-1. Library functions (model orchestration, CRUD ops on comics, metadata)
-2. Comic Vine (scraping issues, volumes and more)
-3. Grand Comics Database (scraping, aggregations and more)
-4. Helpers (image transformation, file-system ops, compression/uncompression)
-
-## Technical stack
-
-`ThreeTwo!` is written in `TypeScript` from UI to the services layer.
-
-The technologies used are:
-
-1. React
-2. Redux
-3. moleculer
-4. RabbitMQ
-5. socket.io
-6. node.js
-7. Express
-8. MongoDB
-9. mongoose
 
 
 ---
@@ -1041,6 +438,19 @@ docker inspect <container-name> | grep -i version
 
 ---
 
+## [Installation](/v0.0.1/installation/)
+
+---
+sidebar_position: 2
+id: installation
+title: Installation
+---
+
+## Installation
+
+
+---
+
 ## [Introduction](/v0.0.1/intro/)
 
 ---
@@ -1094,311 +504,6 @@ Just configure your `AirDC++` host, hub information and you are golden.
 
 You can access your massive comic collection via `OPDS` through apps on your
 mobile devices, like `Panels` on `iOS`
-
-
----
-
-## [Resources & Help](/v0.0.1/resources/)
-
----
-sidebar_position: 3
-id: resources
-title: Resources & Help
----
-
-## Quick Links
-
-- The source code for `ThreeTwo!` is located here:
-  [https://github.com/rishighan/threetwo](https://github.com/rishighan/threetwo)
-- The official `Discord` server is here:
-  [https://discord.gg/DbpcSNuM](https://discord.gg/DbpcSNuM)
-- If you encounter problems, the best recourse to getting help is creating an
-  issue on the repo:
-  [https://github.com/rishighan/threetwo/issues](https://github.com/rishighan/threetwo/issues)
-- For other questions just pop them into the Discord channel
-
-
----
-
-## [Install ThreeTwo! on unRAID with docker-compose](/v0.0.1/unraid_dockercompose/)
-
----
-sidebar_position: 2
-id: unRAID_dockercompose
-title: Install ThreeTwo! on unRAID with docker-compose
----
-
-## Notes
-
-This guide goes over ThreeTwo! installation on unRAID using the
-[docker-compose manager](https://forums.unRAID.net/topic/114415-plugin-docker-compose-manager/)
-plugin. Currently, this is the recommended approach for unRAID users.
-
-With the help of this plugin, you are able to pull the entire ThreeTwo!
-`docker-compose` stack up, down with the click of a button. It abstracts away
-a lot of complexity associated with writing out commands in the console.
-
-That said, the plugin is still in beta, so you may experience strange behavior.
-
-## Pre-requisites
-
-First things first, let's go over what the pre-requisites are:
-
-1. The `docker-compose` configuration for ThreeTwo! is in its own repository
-   [threetwo-docker-compose](https://github.com/rishighan/threetwo-docker-compose).
-   You will be using this as reference.
-2. A working `AirDC++` install is necessary for `DC++` searching/downloading to
-   work. You can install it through the unRAID via the CA store or via a
-   [Docker image](https://airdcpp.net/download#linux-nas-docker-other)
-3. `comics` and `userdata` folders.
-   1. The `comics` folder _must_ be the folder `AirDC++` downloads comics to.
-   2. Create the `userdata` folder under `/mnt/user/appdata/threetwo`
-4. To get ComicVine to work for metadata scraping and other functions, you
-   _must_ have a ComicVine API key. You can get one
-   [on the ComicVine website](https://comicvine.gamespot.com/api/). Metadata
-   scraping will not work unless you supply an API key.
-5. Open an unRAID terminal and create an `.env` file:
-   1. Run this command:
-      `nano /boot/config/plugins/compose.manager/projects/ThreeTwo/.env`
-   2. Paste this into the file, replacing anything within `<>` with actual
-      values:
-
-      ```bash
-      UNDERLYING_HOSTNAME=<UNRAID_HOSTNAME>
-      COMICS_DIRECTORY=<PATH_TO_COMICS_DIRECTORY>
-      USERDATA_DIRECTORY=/mnt/user/appdata/threetwo/userdata
-
-      COMICVINE_API_KEY=<YOUR_COMICVINE_API_KEY>
-
-      LOGGER=true
-      LOGLEVEL=info
-      SERVICEDIR=dist/services
-
-      CHOKIDAR_USEPOLLING=true
-
-      UNRAR_BIN_PATH=/usr/bin/unrar
-      SEVENZ_BINARY_PATH=/usr/bin/7za
-      MONGO_URI=mongodb://db:27017/threetwo
-      ELASTICSEARCH_URI=http://elasticsearch:9200
-      REDIS_URI=redis://redis:6379
-      TRANSPORTER=redis://redis:6379
-      CACHER=Memory
-      ```
-
-## Installation
-
-1. Install the `docker-compose manager` plugin from the unRAID CA store. After
-   installation, you can find the plugin UI under the `Docker` tab.
-2. Create a new stack, give it a name.
-3. Hover over the gear next to it and click on `Edit Stack`.
-4. Copy-paste this into the textarea:
-
-   ```yaml
-   version: "3.7"
-
-   x-userdata-volume: &userdata-volume
-     type: bind
-     source: ${USERDATA_DIRECTORY}
-     target: /userdata
-
-   x-comics-volume: &comics-volume
-     type: bind
-     source: ${COMICS_DIRECTORY}
-     target: /comics
-
-   services:
-     threetwo:
-       build:
-         context: https://github.com/rishighan/threetwo.git
-         dockerfile: Dockerfile
-       image: frishi/threetwo
-       container_name: threetwo-ui
-       env_file: /boot/config/plugins/compose.manager/projects/ThreeTwo/.env
-       restart: unless-stopped
-       ports:
-         - "8050:8050"
-         - "3050:3050"
-       links:
-         - core-services
-       depends_on:
-         - db
-         - elasticsearch
-         - redis
-       networks:
-         - proxy
-
-     metadata-service:
-       build:
-         context: https://github.com/rishighan/threetwo-metadata-service.git
-       image: frishi/threetwo-metadata-service
-       container_name: metadata-service
-       ports:
-         - "3080:3080"
-       environment:
-         SERVICES: api,comicvine
-       env_file: /boot/config/plugins/compose.manager/projects/ThreeTwo/.env
-       depends_on:
-         - db
-         - redis
-       networks:
-         - proxy
-
-     core-services:
-       build:
-         context: https://github.com/rishighan/threetwo-core-service.git
-       image: frishi/threetwo-core-service
-       container_name: core-services
-       ports:
-         - "3000:3000"
-       environment:
-         SERVICES: gcd,mal
-       env_file: /boot/config/plugins/compose.manager/projects/ThreeTwo/.env
-       depends_on:
-         - db
-         - redis
-       networks:
-         - proxy
-
-     db:
-       image: mongo:4.4
-       container_name: mongo-db
-       restart: unless-stopped
-       ports:
-         - "27017:27017"
-       environment:
-         MONGO_INITDB_DATABASE: threetwo
-       volumes:
-         - /mnt/user/appdata/threetwo/db/data:/data/db
-         - /mnt/user/appdata/threetwo/db/config:/data/configdb
-       networks:
-         - proxy
-
-     elasticsearch:
-       image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0
-       container_name: elasticsearch
-       restart: unless-stopped
-       environment:
-         - discovery.type=single-node
-         - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-       ulimits:
-         memlock:
-           soft: -1
-           hard: -1
-       volumes:
-         - /mnt/user/appdata/threetwo/elasticsearch/data:/usr/share/elasticsearch/data
-       ports:
-         - "9200:9200"
-       networks:
-         - proxy
-
-     redis:
-       image: redis:6-alpine
-       container_name: redis
-       restart: unless-stopped
-       ports:
-         - "6379:6379"
-       volumes:
-         - /mnt/user/appdata/threetwo/redis:/data
-       networks:
-         - proxy
-
-   volumes:
-     userdata:
-       <<: *userdata-volume
-     comics:
-       <<: *comics-volume
-
-   networks:
-     proxy:
-       driver: bridge
-   ```
-
-5. Save and pop the stack `up`
-
-## Post-install checks
-
-1. Once the stack comes up, you should be able to access the ThreeTwo! UI on
-   port `8050`
-2. Check the logs of the containers to see if there are any errors
-
-
----
-
-## [Install ThreeTwo! on unRaid](/v0.0.1/unraid_install/)
-
----
-sidebar_position: 2
-id: unraid_install
-title: Install ThreeTwo! on unRaid
----
-
-## Notes
-
-- Currently, `ThreeTwo!` is installed along with its dependencies using
-  `docker-compose`. The easiest way to install it on `unRAID` is to use a VM.
-- Skip the VM creation steps, if you already have a Debian VM
-
-## Pre-requisites
-
-This guide assumes the following is installed or readily available:
-
-- `unRaid 6.9.2` (this version was tested against `6.9.2`)
-- `Debian 10.x` (Grab the install
-  [.iso](https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.1.0-amd64-netinst.iso))
-
-## Getting the VM up and running
-
-1. Download the `Debian` install `.iso`
-2. Place it in a folder accessible by the VM
-3. Go to the `VM` tab in your `unRaid` navigation
-4. Click `Add VM`
-5. From the list presented to you, click `Debian` under `Linux`
-6. On the VM configration page, enter the desired options for memory, CPU
-   cores, vdisk allocation
-7. Make sure that you have set the volume containing the comics correctly for
-   `Unraid Share`
-8. Make sure that you have also set the `Unraid Mount tag` option
-9. Make sure that the network bridge is set to `br0`
-10. Set a password for `VNC` so you can follow through with a graphical install
-    if you so wish
-
-## Installing Debian on the VM
-
-1. Launch the VM via `VNC Remote` option
-2. Follow the steps of the graphical installer
-3. Create a `root` user and a normal `user` and set the passwords for both
-
-## Docker pre-requisites
-
-1. [Make sure you have](https://unix.stackexchange.com/questions/354928/bash-sudo-command-not-found)
-   `sudo`
-2. Make sure you have `ssh` access for the user you created earlier
-3. `ssh` into the VM as the non-root user
-4. Install [Docker Engine](https://docs.docker.com/engine/install/debian/)
-5. Install
-   [docker-compose](https://docs.docker.com/compose/install/#install-compose-on-linux-systems)
-6. Verify that `docker` and `docker-compose` commands work
-
-## Installation
-
-1. Clone the repo: `git clone https://github.com/rishighan/threetwo.git`
-2. Change the directory: `cd threetwo`
-3. Create directories within `threetwo`
-
-   ```bash
-   mkdir comics userdata
-
-   mkdir userdata/covers userdata/temporary userdata/expanded
-   ```
-
-4. Create an external docker network using `sudo docker network create proxy`
-5. Run `sudo docker-compose up --build -d`
-6. Wait for a hot minute
-
-## Post-install checks
-
-1. Once the `docker-compose up` command successfully completes, you can check
-   the spun-up containers using `docker ps`
 
 
 ---

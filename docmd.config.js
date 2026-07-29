@@ -13,29 +13,8 @@ export default {
 
   // Navigation
   navigation: [
-    {
-      title: "Documentation",
-      path: "/intro",
-      children: [
-        { title: "Introduction", path: "/intro", icon: "book" },
-        {
-          title: "Install on unRaid",
-          path: "/unraid_install",
-          icon: "download",
-        },
-        {
-          title: "Docker Compose",
-          path: "/unraid_dockercompose",
-          icon: "package",
-        },
-        {
-          title: "Technical Architecture",
-          path: "/architecture",
-          icon: "layers",
-        },
-        { title: "Resources & Help", path: "/resources", icon: "help-circle" },
-      ],
-    },
+    { title: "Introduction", path: "/intro", icon: "book" },
+    { title: "Installation", path: "/installation", icon: "download" },
     {
       title: "Versions & Compatibility",
       children: [
